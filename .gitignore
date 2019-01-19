@@ -1,0 +1,8 @@
+.vs/
+ChartHelpers/bin/
+ChartHelpers/obj/
+DynamoPackage/NodeModelCharts/bin/
+DynamoPackage/NodeModelCharts/extra/
+NodeModelCharts/bin/
+NodeModelCharts/obj/
+packages/

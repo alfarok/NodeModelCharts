@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeModelCharts", "NodeModelCharts\NodeModelCharts.csproj", "{5FEE3FB4-6AD0-4C3D-9260-471DC761023D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartHelpers", "ChartHelpers\ChartHelpers.csproj", "{AFCA5BC6-19D4-4121-AA34-08B0CD38EC1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FEE3FB4-6AD0-4C3D-9260-471DC761023D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FEE3FB4-6AD0-4C3D-9260-471DC761023D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FEE3FB4-6AD0-4C3D-9260-471DC761023D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FEE3FB4-6AD0-4C3D-9260-471DC761023D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCA5BC6-19D4-4121-AA34-08B0CD38EC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCA5BC6-19D4-4121-AA34-08B0CD38EC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCA5BC6-19D4-4121-AA34-08B0CD38EC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCA5BC6-19D4-4121-AA34-08B0CD38EC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BD38045-2C88-49ED-8D83-E038BAB2E2C5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+{  
+    "license":"MIT",
+    "file_hash":null,
+    "name":"NodeModelCharts",
+    "version":"2.1.0",
+    "description":"An open source library of graphing nodes for Dynamo wrapping the LiveCharts WPF implementation.",
+    "group":"",
+    "keywords":["graph", "chart", "wpf", "bar", "plot", "pie"],
+    "dependencies":[],
+    "contents":"",
+    "engine_version":"2.1.0.7465",
+    "engine":"dynamo",
+    "engine_metadata":"",
+    "site_url":"http://alfarok.io",
+    "repository_url":"https://github.com/alfarok/NodeModelCharts",
+    "contains_binaries":true,
+    "node_libraries":[
+        "NodeModelCharts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "ChartHelpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+     ]
+ }
