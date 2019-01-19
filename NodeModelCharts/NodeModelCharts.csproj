@@ -139,19 +139,23 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
   <Target Name="AfterBuild">
     <ItemGroup>
-      <NodeModelChartsDll Include="$(ProjectDir)bin\$(ConfigurationName)\NodeModelCharts.dll" />
-      <NodeModelChartsXml Include="$(ProjectDir)bin\$(ConfigurationName)\NodeModelCharts.xml" />
-      <ChartHelpersDll Include="$(ProjectDir)bin\$(ConfigurationName)\ChartHelpers.dll" />
+      <NodeModelChartsDll Include="$(ProjectDir)bin\$(ConfigurationName)\NodeModelCharts.dll"/>
+      <NodeModelChartsXml Include="$(ProjectDir)bin\$(ConfigurationName)\NodeModelCharts.xml"/>
+      <ChartHelpersDll Include="$(ProjectDir)bin\$(ConfigurationName)\ChartHelpers.dll"/>
+      <LiveChartsDll Include="$(ProjectDir)bin\$(ConfigurationName)\LiveCharts.dll"/>
+      <LiveChartsXml Include="$(ProjectDir)bin\$(ConfigurationName)\LiveCharts.xml"/>
+      <LiveChartsWpfDll Include="$(ProjectDir)bin\$(ConfigurationName)\LiveCharts.Wpf.dll"/>
+      <LiveChartsWpfXml Include="$(ProjectDir)bin\$(ConfigurationName)\LiveCharts.Wpf.xml"/>
     </ItemGroup>
-    <Copy SourceFiles="@(NodeModelChartsDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
-    <Copy SourceFiles="@(NodeModelChartsXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
-    <Copy SourceFiles="@(ChartHelpersDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
-    <!-- TODO - Comment out before committing -->
-    <Copy SourceFiles="@(NodeModelChartsDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" />
-    <Copy SourceFiles="@(NodeModelChartsXml)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" />
-    <Copy SourceFiles="@(ChartHelpersDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" />
+    <Copy SourceFiles="@(NodeModelChartsDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(NodeModelChartsXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(ChartHelpersDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(LiveChartsDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(LiveChartsXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(LiveChartsWpfDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
+    <Copy SourceFiles="@(LiveChartsWpfXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin"/>
   </Target>
 </Project>
