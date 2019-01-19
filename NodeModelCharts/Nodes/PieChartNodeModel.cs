@@ -36,7 +36,6 @@ namespace NodeModelCharts.Nodes
             {
                 inputValue = value;
                 RaisePropertyChanged("InputValue");
-                OnNodeModified();
             }
         }
         #endregion
