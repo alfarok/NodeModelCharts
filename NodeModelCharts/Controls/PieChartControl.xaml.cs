@@ -25,15 +25,19 @@ namespace NodeModelCharts.Controls
             }
         }
 
+        public Func<ChartPoint, string> PointLabel { get; set; }
+
         public PieChartControl(PieChartNodeModel model)
         {
             InitializeComponent();
 
             model.PropertyChanged += NodeModel_PropertyChanged;
 
+            PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
             // Default data
-            PieChart.Series.Add(new PieSeries { Title = "BAD", Fill = Brushes.Red, StrokeThickness = 0, Values = new ChartValues<double> { 50.0 } });
-            PieChart.Series.Add(new PieSeries { Title = "GOOD", Fill = Brushes.Green, StrokeThickness = 0, Values = new ChartValues<double> { 100.0 } });
+            PieChart.Series.Add(new PieSeries { Title = "BAD", Fill = Brushes.Red, StrokeThickness = 0, Values = new ChartValues<double> { 50.0 }, DataLabels = true, LabelPoint = PointLabel });
+            PieChart.Series.Add(new PieSeries { Title = "GOOD", Fill = Brushes.Green, StrokeThickness = 0, Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
 
             DataContext = this;
         }
@@ -55,13 +59,18 @@ namespace NodeModelCharts.Controls
                     {
                         Color randomColor = Color.FromRgb((byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
                         SolidColorBrush brush = new SolidColorBrush(randomColor);
-                        PieChart.Series.Add(new PieSeries { Title = nodeModel.Labels[i], Fill = brush, StrokeThickness = 0, Values = new ChartValues<double> { nodeModel.Values[i] } });
+                        PieChart.Series.Add(new PieSeries
+                        {
+                            Title = nodeModel.Labels[i],
+                            Fill = brush, StrokeThickness = 0,
+                            Values = new ChartValues<double> { nodeModel.Values[i] },
+                            DataLabels = true,
+                            LabelPoint = PointLabel
+                });
                     }
                 });
             }
         }
-
-        public Func<ChartPoint, string> PointLabel { get; set; }
 
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
         {
