@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using Autodesk.DesignScript.Runtime;
 using Dynamo.Controls;
@@ -23,19 +24,32 @@ namespace NodeModelCharts.Nodes
     public class PieChartNodeModel : NodeModel
     {
         #region Properties
-        private string inputValue;
+        private List<string> labels;
+        private List<double> values;
 
         /// <summary>
-        /// A value that will be bound to our
-        /// custom UI's slider.
+        /// Pie chart labels.
         /// </summary>
-        public string InputValue
+        public List<string> Labels
         {
-            get { return inputValue; }
+            get { return labels; }
             set
             {
-                inputValue = value;
-                RaisePropertyChanged("InputValue");
+                labels = value;
+                RaisePropertyChanged("Labels");
+            }
+        }
+
+        /// <summary>
+        /// Pie chart values.
+        /// </summary>
+        public List<double> Values
+        {
+            get { return values; }
+            set
+            {
+                values = value;
+                RaisePropertyChanged("Values");
             }
         }
         #endregion
@@ -46,15 +60,14 @@ namespace NodeModelCharts.Nodes
         /// </summary>
         public PieChartNodeModel()
         {
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("input", "an input for the node")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "pie chart category labels")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "pie chart values to be compared")));
 
             OutPorts.Add(new PortModel(PortType.Output, this, new PortData("upper value", "returns a 0-10 double value")));
 
             RegisterAllPorts();
 
             ArgumentLacing = LacingStrategy.Disabled;
-
-            InputValue = "default";
         }
 
 
@@ -95,10 +108,31 @@ namespace NodeModelCharts.Nodes
         /// <param name="data">The data passed through the data bridge.</param>
         private void DataBridgeCallback(object data)
         {
-            ArrayList inputs = data as ArrayList;
-            string inputText = inputs[0].ToString();
+            // Grab input data which always returned as an ArrayList
+            var inputs = data as ArrayList;
 
-            InputValue = inputText;
+            // Each of the list inputs are also returned as ArrayLists
+            var keys = inputs[0] as ArrayList;
+            var values = inputs[1] as ArrayList;
+
+            // Only continue if key/values match in length
+            if(keys.Count != values.Count || keys.Count < 1)
+            {
+                return;
+            }
+
+            // Update chart properties
+            Labels = new List<string>();
+            Values = new List<double>();
+
+            for(var i = 0; i < keys.Count; i++)
+            {
+                Labels.Add((string)keys[i]);
+                Values.Add((long)values[i]);
+            }
+
+            // Notify UI the data has been modified
+            RaisePropertyChanged("DataUpdated");
         }
         #endregion
 
@@ -114,60 +148,32 @@ namespace NodeModelCharts.Nodes
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
         {
             // WARNING!!!
-            // Do not throw an exception during AST creation. If you
-            // need to convey a failure of this node, then use
-            // AstFactory.BuildNullNode to pass out null.
+            // Do not throw an exception during AST creation.
 
             // If inputs are not connected return null
-            if (InPorts[0].IsConnected == false)
+            if (InPorts[0].IsConnected == false ||
+                InPorts[1].IsConnected == false)
             {
                 return new[]
                 {
-                    AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), AstFactory.BuildNullNode())
+                    AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), AstFactory.BuildNullNode()),
+                    AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(1), AstFactory.BuildNullNode()),
                 };
             }
 
-            // We create a DoubleNode to wrap the value 'sliderValue' that
-            // we've stored in a private member.
-
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<string, string>(PieChartFunctions.GetNodeInput),
-                new List<AssociativeNode> { inputAstNodes[0] }
+                new Func<List<string>, List<double>, Dictionary<string, double>>(PieChartFunctions.GetNodeInput),
+                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1] }
             );
 
-            // A FunctionCallNode can be used to represent the calling of a 
-            // function in the AST. The method specified here must live in 
-            // a separate assembly and will be loaded by Dynamo at the time 
-            // that this AST is built. If the method can't be found, you'll get 
-            // a "De-referencing a non-pointer warning."
-
-            /*
-            var funcNode = AstFactory.BuildFunctionCall(
-                new Func<double, double>(ChartHelpers.PieChartFunctions.MultiplyInputByNumber),
-                new List<AssociativeNode>() { stringNode });
-            */
-
-            // Using the AstFactory class, we can build AstNode objects
-            // that assign doubles, assign function calls, build expression lists, etc.
             return new[]
             {
-                // In these assignments, GetAstIdentifierForOutputIndex finds 
-                // the unique identifier which represents an output on this node
-                // and 'assigns' that variable the expression that you create.
-
-                // For the first node, we'll just pass through the 
-                // input provided to this node.
-                //AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), inputNode), //AstFactory.BuildDoubleNode(sliderValue)
-
-
                 AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), inputNode),
                     AstFactory.BuildAssignment(
                         AstFactory.BuildIdentifier(AstIdentifierBase + "_dummy"),
-                        VMDataBridge.DataBridge.GenerateBridgeDataAst(GUID.ToString(), AstFactory.BuildExprList(inputAstNodes))),
-
-                // For the second node, we'll build a double node that 
-                // passes along our value for multipled value.
-                //AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(1), AstFactory.BuildNullNode()) //funcNode
+                        VMDataBridge.DataBridge.GenerateBridgeDataAst(GUID.ToString(), AstFactory.BuildExprList(inputAstNodes)
+                    )
+                ),
             };
         }
         #endregion
@@ -189,23 +195,8 @@ namespace NodeModelCharts.Nodes
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>
         public void CustomizeView(PieChartNodeModel model, NodeView nodeView)
         {
-            
-            // The view variable is a reference to the node's view.
-            // In the middle of the node is a grid called the InputGrid.
-            // We reccommend putting your custom UI in this grid, as it has
-            // been designed for this purpose.
-
-            // Create an instance of our custom UI class (defined in xaml),
-            // and put it into the input grid.
             var pieChartControl = new PieChartControl(model);
             nodeView.inputGrid.Children.Add(pieChartControl);
-
-            // Set the data context for our control to be the node model.
-            // Properties in this class which are data bound will raise 
-            // property change notifications which will update the UI.
-
-            // TODO - this needs to be investigated
-            //pieChartControl.DataContext = model;
         }
 
         /// <summary>

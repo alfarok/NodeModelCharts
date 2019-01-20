@@ -6,31 +6,16 @@ using LiveCharts.Wpf;
 using NodeModelCharts.Nodes;
 using System.ComponentModel;
 
+using System.Windows.Media;
+
 namespace NodeModelCharts.Controls
 {
     /// <summary>
     /// Interaction logic for PieChartControl.xaml
     /// </summary>
     public partial class PieChartControl : UserControl, INotifyPropertyChanged
-
     {
-        public PieChartNodeModel NodeModel { get; set; }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-
-        private string sampleName;
-
-        public string SampleName
-        {
-            get { return sampleName; }
-            set
-            {
-                sampleName = value;
-                OnPropertyChanged("SampleName");
-            }
-        }
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -44,24 +29,35 @@ namespace NodeModelCharts.Controls
         {
             InitializeComponent();
 
-            NodeModel = model;
+            model.PropertyChanged += NodeModel_PropertyChanged;
 
-            NodeModel.PropertyChanged += NodeModel_PropertyChanged;
-
-            SampleName = NodeModel.InputValue;
-
-            PointLabel = chartPoint =>
-                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            // Default data
+            PieChart.Series.Add(new PieSeries { Title = "BAD", Fill = Brushes.Red, StrokeThickness = 0, Values = new ChartValues<double> { 50.0 } });
+            PieChart.Series.Add(new PieSeries { Title = "GOOD", Fill = Brushes.Green, StrokeThickness = 0, Values = new ChartValues<double> { 100.0 } });
 
             DataContext = this;
         }
 
+        private Random rnd = new Random();
+
         private void NodeModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             var thing = e.PropertyName;
-            if(e.PropertyName == "InputValue")
+            if(e.PropertyName == "DataUpdated")
             {
-                SampleName = (sender as PieChartNodeModel).InputValue;
+                var nodeModel = sender as PieChartNodeModel;
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    PieChart.Series.Clear();
+
+                    for (var i = 0; i < nodeModel.Labels.Count; i++)
+                    {
+                        Color randomColor = Color.FromRgb((byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
+                        SolidColorBrush brush = new SolidColorBrush(randomColor);
+                        PieChart.Series.Add(new PieSeries { Title = nodeModel.Labels[i], Fill = brush, StrokeThickness = 0, Values = new ChartValues<double> { nodeModel.Values[i] } });
+                    }
+                });
             }
         }
 
