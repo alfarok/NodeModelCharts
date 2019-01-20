@@ -24,34 +24,15 @@ namespace NodeModelCharts.Nodes
     public class PieChartNodeModel : NodeModel
     {
         #region Properties
-        private List<string> labels;
-        private List<double> values;
-
         /// <summary>
         /// Pie chart labels.
         /// </summary>
-        public List<string> Labels
-        {
-            get { return labels; }
-            set
-            {
-                labels = value;
-                RaisePropertyChanged("Labels");
-            }
-        }
+        public List<string> Labels { get; set; }
 
         /// <summary>
         /// Pie chart values.
         /// </summary>
-        public List<double> Values
-        {
-            get { return values; }
-            set
-            {
-                values = value;
-                RaisePropertyChanged("Values");
-            }
-        }
+        public List<double> Values { get; set; }
         #endregion
 
         #region Constructors
@@ -70,7 +51,6 @@ namespace NodeModelCharts.Nodes
             ArgumentLacing = LacingStrategy.Disabled;
         }
 
-
         [JsonConstructor]
         /// <summary>
         /// Instantiate a new NodeModel instance.
@@ -79,7 +59,7 @@ namespace NodeModelCharts.Nodes
         #endregion
 
         // Use the VMDataBridge to safely retrieve our input values
-        #region databridge callback
+        #region databridge
         /// <summary>
         /// Register the data bridge callback.
         /// </summary>
@@ -186,10 +166,7 @@ namespace NodeModelCharts.Nodes
     {
         /// <summary>
         /// At run-time, this method is called during the node 
-        /// creation. Here you can create custom UI elements and
-        /// add them to the node view, but we recommend designing
-        /// your UI declaratively using xaml, and binding it to
-        /// properties on this node as the DataContext.
+        /// creation. Add custom UI element to the node view.
         /// </summary>
         /// <param name="model">The NodeModel representing the node's core logic.</param>
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>

@@ -13,7 +13,7 @@ namespace ChartHelpers
         [IsVisibleInDynamoLibrary(false)]
         public static Dictionary<string, double> GetNodeInput(List<string> labels, List<double> values)
         {
-            // TODO - just pass input data unmodified
+            // TODO - just pass input data unmodified instead?
             var output = new Dictionary<string, double>();
 
             if (labels.Count != values.Count)

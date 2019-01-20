@@ -15,17 +15,14 @@ namespace NodeModelCharts.Controls
     /// </summary>
     public partial class PieChartControl : UserControl, INotifyPropertyChanged
     {
+        private Func<ChartPoint, string> PointLabel { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
+        private Random rnd = new Random();
 
         private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public Func<ChartPoint, string> PointLabel { get; set; }
 
         public PieChartControl(PieChartNodeModel model)
         {
@@ -35,22 +32,20 @@ namespace NodeModelCharts.Controls
 
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            // Default data
+            // TODO - Make a function that sets Default data and make sure it triggers when a port is disconnected.
             PieChart.Series.Add(new PieSeries { Title = "BAD", Fill = Brushes.Red, StrokeThickness = 0, Values = new ChartValues<double> { 50.0 }, DataLabels = true, LabelPoint = PointLabel });
             PieChart.Series.Add(new PieSeries { Title = "GOOD", Fill = Brushes.Green, StrokeThickness = 0, Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
 
             DataContext = this;
         }
 
-        private Random rnd = new Random();
-
-        private void NodeModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            var thing = e.PropertyName;
             if(e.PropertyName == "DataUpdated")
             {
                 var nodeModel = sender as PieChartNodeModel;
 
+                // Invoke on UI thread
                 this.Dispatcher.Invoke(() =>
                 {
                     PieChart.Series.Clear();
@@ -66,7 +61,7 @@ namespace NodeModelCharts.Controls
                             Values = new ChartValues<double> { nodeModel.Values[i] },
                             DataLabels = true,
                             LabelPoint = PointLabel
-                });
+                        });
                     }
                 });
             }
@@ -74,11 +69,13 @@ namespace NodeModelCharts.Controls
 
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
         {
-            var chart = (LiveCharts.Wpf.PieChart)chartpoint.ChartView;
+            var chart = (PieChart)chartpoint.ChartView;
 
-            //clear selected slice.
+            // Clear selected slice
             foreach (PieSeries series in chart.Series)
+            {
                 series.PushOut = 0;
+            }
 
             var selectedSeries = (PieSeries)chartpoint.SeriesView;
             selectedSeries.PushOut = 8;
