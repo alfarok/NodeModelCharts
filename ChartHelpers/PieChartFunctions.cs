@@ -10,6 +10,8 @@ namespace ChartHelpers
 {
     public class PieChartFunctions
     {
+        private PieChartFunctions() { }
+
         [IsVisibleInDynamoLibrary(false)]
         public static Dictionary<string, double> GetNodeInput(List<string> labels, List<double> values, List<DSCore.Color> colors)
         {
