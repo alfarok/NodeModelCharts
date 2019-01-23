@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using LiveCharts;
 using LiveCharts.Wpf;
 using NodeModelCharts.Nodes;
 using System.ComponentModel;
-
-using System.Windows.Media;
 
 namespace NodeModelCharts.Controls
 {
@@ -16,8 +15,9 @@ namespace NodeModelCharts.Controls
     public partial class PieChartControl : UserControl, INotifyPropertyChanged
     {
         private Func<ChartPoint, string> PointLabel { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
         private Random rnd = new Random();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -32,9 +32,29 @@ namespace NodeModelCharts.Controls
 
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            // TODO - Make a function that sets Default data and make sure it triggers when a port is disconnected.
-            PieChart.Series.Add(new PieSeries { Title = "BAD", Fill = Brushes.Red, StrokeThickness = 0, Values = new ChartValues<double> { 50.0 }, DataLabels = true, LabelPoint = PointLabel });
-            PieChart.Series.Add(new PieSeries { Title = "GOOD", Fill = Brushes.Green, StrokeThickness = 0, Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
+            if(model.InPorts[0].IsConnected == false && model.InPorts[1].IsConnected == false && model.InPorts[2].IsConnected == false)
+            {
+                PieChart.Series.Add(new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
+                PieChart.Series.Add(new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
+                PieChart.Series.Add(new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
+            }
+
+            else if(model.InPorts[0].IsConnected == true && model.InPorts[1].IsConnected == true && model.InPorts[2].IsConnected == true)
+            {
+                if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
+                {
+                    for (var i = 0; i < model.Labels.Count; i++)
+                    {
+                        PieChart.Series.Add(new PieSeries
+                        {
+                            Title = model.Labels[i],
+                            Values = new ChartValues<double> { model.Values[i] },
+                            DataLabels = true,
+                            LabelPoint = PointLabel
+                        });
+                    }
+                }
+            }
 
             DataContext = this;
         }
@@ -52,12 +72,11 @@ namespace NodeModelCharts.Controls
 
                     for (var i = 0; i < nodeModel.Labels.Count; i++)
                     {
-                        Color randomColor = Color.FromRgb((byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
-                        SolidColorBrush brush = new SolidColorBrush(randomColor);
                         PieChart.Series.Add(new PieSeries
                         {
                             Title = nodeModel.Labels[i],
-                            Fill = brush, StrokeThickness = 0,
+                            /*Fill = nodeModel.Colors[i],*/ // TODO this is causing a crash
+                            //StrokeThickness = 0,
                             Values = new ChartValues<double> { nodeModel.Values[i] },
                             DataLabels = true,
                             LabelPoint = PointLabel

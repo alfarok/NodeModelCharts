@@ -11,7 +11,7 @@ namespace ChartHelpers
     public class PieChartFunctions
     {
         [IsVisibleInDynamoLibrary(false)]
-        public static Dictionary<string, double> GetNodeInput(List<string> labels, List<double> values)
+        public static Dictionary<string, double> GetNodeInput(List<string> labels, List<double> values, List<DSCore.Color> colors)
         {
             // TODO - just pass input data unmodified instead?
             var output = new Dictionary<string, double>();

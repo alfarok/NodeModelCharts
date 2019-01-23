@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using Autodesk.DesignScript.Runtime;
 using Dynamo.Controls;
 using Dynamo.Graph.Nodes;
@@ -18,12 +19,13 @@ namespace NodeModelCharts.Nodes
     [NodeName("Pie")]
     [NodeCategory("NodeModelCharts.Charts")]
     [NodeDescription("Create a new Pie Chart.")]
-    [InPortTypes("string")]
-    [OutPortTypes("string", "string")]
+    [InPortTypes("List<string>", "List<double>", "List<color>")]
+    [OutPortTypes("Dictionary<Label, Value>")]
     [IsDesignScriptCompatible]
     public class PieChartNodeModel : NodeModel
     {
         #region Properties
+        private Random rnd = new Random();
         /// <summary>
         /// Pie chart labels.
         /// </summary>
@@ -33,6 +35,11 @@ namespace NodeModelCharts.Nodes
         /// Pie chart values.
         /// </summary>
         public List<double> Values { get; set; }
+
+        /// <summary>
+        /// Pie chart color values.
+        /// </summary>
+        public List<SolidColorBrush> Colors { get; set; }
         #endregion
 
         #region Constructors
@@ -43,10 +50,13 @@ namespace NodeModelCharts.Nodes
         {
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "pie chart category labels")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "pie chart values to be compared")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("color", "pie chart color values")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("upper value", "returns a 0-10 double value")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
 
             RegisterAllPorts();
+
+            PortDisconnected += PieChartNodeModel_PortDisconnected;
 
             ArgumentLacing = LacingStrategy.Disabled;
         }
@@ -55,11 +65,38 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public PieChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts) { }
+        public PieChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
+        {
+            PortDisconnected += PieChartNodeModel_PortDisconnected;
+            RaisePropertyChanged("DataUpdated");
+        }
         #endregion
 
-        // Use the VMDataBridge to safely retrieve our input values
+        #region Events
+        private void PieChartNodeModel_PortDisconnected(PortModel obj)
+        {
+            // Clear UI when a input port is disconnected
+            Labels = new List<string>();
+            Values = new List<double>();
+            Colors = new List<SolidColorBrush>();
+
+            /*
+            // All ports disconnected return template
+            if (InPorts[0].IsConnected == false &&
+                InPorts[1].IsConnected == false &&
+                InPorts[2].IsConnected == false)
+            {
+                // TODO
+            }
+            */
+
+            RaisePropertyChanged("DataUpdated");
+        }
+        #endregion
+
         #region databridge
+        // Use the VMDataBridge to safely retrieve our input values
+
         /// <summary>
         /// Register the data bridge callback.
         /// </summary>
@@ -67,15 +104,6 @@ namespace NodeModelCharts.Nodes
         {
             base.OnBuilt();
             VMDataBridge.DataBridge.Instance.RegisterCallback(GUID.ToString(), DataBridgeCallback);
-        }
-
-        /// <summary>
-        /// Unregister the data bridge callback.
-        /// </summary>
-        public override void Dispose()
-        {
-            base.Dispose();
-            VMDataBridge.DataBridge.Instance.UnregisterCallback(GUID.ToString());
         }
 
         /// <summary>
@@ -94,21 +122,41 @@ namespace NodeModelCharts.Nodes
             // Each of the list inputs are also returned as ArrayLists
             var keys = inputs[0] as ArrayList;
             var values = inputs[1] as ArrayList;
+            var colors = inputs[2] as ArrayList;
 
             // Only continue if key/values match in length
             if(keys.Count != values.Count || keys.Count < 1)
             {
-                return;
+                return; // TODO - throw exception for warning msg?
             }
 
             // Update chart properties
             Labels = new List<string>();
             Values = new List<double>();
+            Colors = new List<SolidColorBrush>();
 
-            for(var i = 0; i < keys.Count; i++)
+            if (colors.Count != keys.Count)
             {
-                Labels.Add((string)keys[i]);
-                Values.Add((long)values[i]);
+                for (var i = 0; i < keys.Count; i++)
+                {
+                    Labels.Add((string)keys[i]);
+                    Values.Add((long)values[i]);
+                    Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
+                    SolidColorBrush brush = new SolidColorBrush(randomColor);
+                    Colors.Add(brush);
+                }
+            }
+            else
+            {
+                for (var i = 0; i < keys.Count; i++)
+                {
+                    Labels.Add((string)keys[i]);
+                    Values.Add((long)values[i]);
+                    var dynColor = (DSCore.Color)colors[i];
+                    var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
+                    SolidColorBrush brush = new SolidColorBrush(convertedColor);
+                    Colors.Add(brush);
+                }
             }
 
             // Notify UI the data has been modified
@@ -132,18 +180,18 @@ namespace NodeModelCharts.Nodes
 
             // If inputs are not connected return null
             if (InPorts[0].IsConnected == false ||
-                InPorts[1].IsConnected == false)
+                InPorts[1].IsConnected == false ||
+                InPorts[2].IsConnected == false)
             {
                 return new[]
                 {
                     AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), AstFactory.BuildNullNode()),
-                    AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(1), AstFactory.BuildNullNode()),
                 };
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<double>, Dictionary<string, double>>(PieChartFunctions.GetNodeInput),
-                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1] }
+                new Func<List<string>, List<double>, List<DSCore.Color>, Dictionary<string, double>>(PieChartFunctions.GetNodeInput),
+                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2] }
             );
 
             return new[]
