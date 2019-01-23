@@ -166,5 +166,13 @@
     <Copy SourceFiles="@(LiveChartsXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
     <Copy SourceFiles="@(LiveChartsWpfDll)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
     <Copy SourceFiles="@(LiveChartsWpfXml)" DestinationFolder="$(ProjectDir)..\DynamoPackage\NodeModelCharts\bin" />
+    <!-- Copy package to local Dynamo location on build -->
+    <!-- <Copy SourceFiles="@(NodeModelChartsDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(NodeModelChartsXml)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(ChartHelpersDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(LiveChartsDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(LiveChartsXml)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(LiveChartsWpfDll)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
+    <!-- <Copy SourceFiles="@(LiveChartsWpfXml)" DestinationFolder="C:\Users\alfarok\AppData\Roaming\Dynamo\Dynamo Core\2.2\packages\NodeModelCharts\bin" /> -->
   </Target>
 </Project>
