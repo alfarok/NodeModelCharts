@@ -49,6 +49,7 @@ namespace NodeModelCharts.Controls
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double> { model.Values[i] },
+                            Fill = model.Colors[i],
                             DataLabels = true,
                             LabelPoint = PointLabel
                         });

@@ -68,7 +68,6 @@ namespace NodeModelCharts.Nodes
         public PieChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
         {
             PortDisconnected += PieChartNodeModel_PortDisconnected;
-            RaisePropertyChanged("DataUpdated");
         }
         #endregion
 
