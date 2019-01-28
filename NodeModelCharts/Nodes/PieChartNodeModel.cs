@@ -143,6 +143,7 @@ namespace NodeModelCharts.Nodes
                     Values.Add((long)values[i]);
                     Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
                     SolidColorBrush brush = new SolidColorBrush(randomColor);
+                    brush.Freeze();
                     Colors.Add(brush);
                 }
             }
@@ -155,6 +156,7 @@ namespace NodeModelCharts.Nodes
                     var dynColor = (DSCore.Color)colors[i];
                     var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
                     SolidColorBrush brush = new SolidColorBrush(convertedColor);
+                    brush.Freeze();
                     Colors.Add(brush);
                 }
             }

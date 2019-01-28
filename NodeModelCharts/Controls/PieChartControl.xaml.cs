@@ -75,7 +75,7 @@ namespace NodeModelCharts.Controls
                         PieChart.Series.Add(new PieSeries
                         {
                             Title = nodeModel.Labels[i],
-                            /*Fill = nodeModel.Colors[i],*/ // TODO this is causing a crash
+                            Fill = nodeModel.Colors[i],
                             //StrokeThickness = 0,
                             Values = new ChartValues<double> { nodeModel.Values[i] },
                             DataLabels = true,
