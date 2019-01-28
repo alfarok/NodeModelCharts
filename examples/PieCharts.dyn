@@ -1,0 +1,629 @@
+{
+  "Uuid": "9161b8ff-6fd5-4f73-9fc6-9dc3458a47ce",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PieChart",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "DesignScript.Builtin.Dictionary": {
+        "Key": "DesignScript.Builtin.Dictionary",
+        "Value": "DesignScriptBuiltin.dll"
+      },
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Person1\", \"Person2\", \"Person3\"];\n[x, 50.5, 100.4];",
+      "Id": "76c7455c58ff4f2b967b5fb805ed7c8b",
+      "Inputs": [
+        {
+          "Id": "2c2ccc7c766e4c2eaa863db04708b5e5",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "69b37d9eaac149a38b9c57ec612c0660",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bfaa6a8f338f49f9a72006067a32da79",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "chartData =\n{\n\t\"alfarok\" : x,\n\t\"Person2\" : 150,\n\t\"Person3\" : 150,\n\t\"Person4\" : 150\n};\n\nchartData.Keys;\nchartData.Values;\n[];",
+      "Id": "c48c0fe91bdf4f0cb331da0c6878f990",
+      "Inputs": [
+        {
+          "Id": "ee8fe7e1ee9049ec914752e710a2d091",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7c274111c13e43a4883dec2b93211dac",
+          "Name": "",
+          "Description": "chartData",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "663fadb42ea749548ec198632ee1f44a",
+          "Name": "",
+          "Description": "Value of expression at line 9",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a9c05b4992a749cda4047cea3644a191",
+          "Name": "",
+          "Description": "Value of expression at line 10",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "90eaef7c9eec40efafdc6b143c9b5d88",
+          "Name": "",
+          "Description": "Value of expression at line 11",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.PieChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Person1",
+        "Person2",
+        "Person3"
+      ],
+      "Values": [
+        45.0,
+        50.5,
+        100.4
+      ],
+      "Colors": [
+        "#FFDC143C",
+        "#FF00FF00",
+        "#FF0000FF"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "a8465509bf794a35a49314c9120fc74d",
+      "Inputs": [
+        {
+          "Id": "30ae0b9308ed47b88b74e447284ebdc2",
+          "Name": "labels",
+          "Description": "pie chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e99480b651af432795149dd08bc865f8",
+          "Name": "values",
+          "Description": "pie chart values to be compared",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "71cd66ef79f74204a376df51982f77a6",
+          "Name": "color",
+          "Description": "pie chart color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d5caaeec23dc4b4bbaf6e007dbaf124c",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Pie Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.PieChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "alfarok",
+        "Person2",
+        "Person3",
+        "Person4"
+      ],
+      "Values": [
+        45.0,
+        150.0,
+        150.0,
+        150.0
+      ],
+      "Colors": [
+        "#FF0B49AE",
+        "#FF9E5FCB",
+        "#FF4FA31E",
+        "#FF4277C3"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "cff4b553004344c18b5669d9b7154c97",
+      "Inputs": [
+        {
+          "Id": "ca1e5caf3ddc4564b6833d296de61df9",
+          "Name": "labels",
+          "Description": "pie chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cdd7bdea84444352873ed656ea8f5b71",
+          "Name": "values",
+          "Description": "pie chart values to be compared",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "71b593ea463a49c3a679c9c2f05d58c9",
+          "Name": "color",
+          "Description": "pie chart color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e4214445867421695d352c457d7b3bd",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Pie Chart."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 220,
+        "G": 20,
+        "B": 60,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "5549356c930a40f38a556c9dce159bcb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a1bdfe92ff114161a42da394d3d2202a",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 0,
+        "G": 255,
+        "B": 0,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "942d2c86e2bd44678346f9f1c386b4b7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2b0ddb5a65734e9aab72cec9ec94dd8d",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 0,
+        "G": 0,
+        "B": 255,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "a853a6f5a59743a39b29cee299f8a8e6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "531ca313b78c4b6fb5b66b963ccb126a",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "42b801e3a7e64008aab605878a0cbe2f",
+      "Inputs": [
+        {
+          "Id": "f3261157e724461f993c6c2ef069a689",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4a4f0cfd75ce4925b9ed62f4f7004c76",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4f0007b76b604a77b4bc2eb3062b32d3",
+          "Name": "item2",
+          "Description": "Item Index #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c1c3c15a6cbc4ce18a1fadcb0409ce1e",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 45.0,
+      "Id": "d39c8358a3c54673b2826bff4d8edd18",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bd53b0959c1e438894aa8449ab107dd4",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.PieChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "b63c69bc84f94844a393d19a50d8194e",
+      "Inputs": [
+        {
+          "Id": "d3fb20b8966f45b5a7c0dcc9f8b23b99",
+          "Name": "labels",
+          "Description": "pie chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "458371cf775844cd8df4d135a61937de",
+          "Name": "values",
+          "Description": "pie chart values to be compared",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9f8dd8c0b2414245a74e5b82aa32c21d",
+          "Name": "color",
+          "Description": "pie chart color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ce0af8d24c4741f08a2b4ce15d31fded",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Pie Chart."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "69b37d9eaac149a38b9c57ec612c0660",
+      "End": "30ae0b9308ed47b88b74e447284ebdc2",
+      "Id": "3818a1c640db47b1a113d287028fccd7"
+    },
+    {
+      "Start": "bfaa6a8f338f49f9a72006067a32da79",
+      "End": "e99480b651af432795149dd08bc865f8",
+      "Id": "5d807b23351f4729bbed9210baa2218c"
+    },
+    {
+      "Start": "663fadb42ea749548ec198632ee1f44a",
+      "End": "ca1e5caf3ddc4564b6833d296de61df9",
+      "Id": "0d25a8caf0964165a0ab135c53bbba27"
+    },
+    {
+      "Start": "a9c05b4992a749cda4047cea3644a191",
+      "End": "cdd7bdea84444352873ed656ea8f5b71",
+      "Id": "b4b3611cbd114178b57f70df6f525d59"
+    },
+    {
+      "Start": "90eaef7c9eec40efafdc6b143c9b5d88",
+      "End": "71b593ea463a49c3a679c9c2f05d58c9",
+      "Id": "206a930317d24ceab68725a0c6eed4b4"
+    },
+    {
+      "Start": "a1bdfe92ff114161a42da394d3d2202a",
+      "End": "f3261157e724461f993c6c2ef069a689",
+      "Id": "014ee14384ff484abe54982c245b3f9a"
+    },
+    {
+      "Start": "2b0ddb5a65734e9aab72cec9ec94dd8d",
+      "End": "4a4f0cfd75ce4925b9ed62f4f7004c76",
+      "Id": "bf80a2fd4787457aba06a0862d790c8f"
+    },
+    {
+      "Start": "531ca313b78c4b6fb5b66b963ccb126a",
+      "End": "4f0007b76b604a77b4bc2eb3062b32d3",
+      "Id": "8f78a5492fe242d3a2fa12bde35f46f4"
+    },
+    {
+      "Start": "c1c3c15a6cbc4ce18a1fadcb0409ce1e",
+      "End": "71cd66ef79f74204a376df51982f77a6",
+      "Id": "b2de9816411e4cd18583defc076d7cac"
+    },
+    {
+      "Start": "bd53b0959c1e438894aa8449ab107dd4",
+      "End": "2c2ccc7c766e4c2eaa863db04708b5e5",
+      "Id": "3ce02f1dee984b95aa80de7da8c1ed18"
+    },
+    {
+      "Start": "bd53b0959c1e438894aa8449ab107dd4",
+      "End": "ee8fe7e1ee9049ec914752e710a2d091",
+      "Id": "5a2a3f79a19142f49c3cf28c48de4014"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3845",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "76c7455c58ff4f2b967b5fb805ed7c8b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 228.25475417797776,
+        "Y": 494.79959110804879
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c48c0fe91bdf4f0cb331da0c6878f990",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 309.97383772923718,
+        "Y": -13.347813101667697
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Pie",
+        "Id": "a8465509bf794a35a49314c9120fc74d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 579.63140703054,
+        "Y": 484.37560827433481
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Pie",
+        "Id": "cff4b553004344c18b5669d9b7154c97",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 579.63140703054,
+        "Y": 114.85660179874853
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "5549356c930a40f38a556c9dce159bcb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 230.33521218970486,
+        "Y": 592.856894742175
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "942d2c86e2bd44678346f9f1c386b4b7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 230.33521218970486,
+        "Y": 683.33537952353549
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "a853a6f5a59743a39b29cee299f8a8e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 230.33521218970486,
+        "Y": 775.62728843320917
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "42b801e3a7e64008aab605878a0cbe2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 399.67358485085333,
+        "Y": 656.86171278303243
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider",
+        "Id": "d39c8358a3c54673b2826bff4d8edd18",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -216.08581415030091,
+        "Y": 312.03132813604384
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Pie",
+        "Id": "b63c69bc84f94844a393d19a50d8194e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 579.63140703054,
+        "Y": -257.96621367575688
+      }
+    ],
+    "Annotations": [],
+    "X": 338.29288834269528,
+    "Y": 150.52108381475321,
+    "Zoom": 0.46719716546384127
+  }
+}
