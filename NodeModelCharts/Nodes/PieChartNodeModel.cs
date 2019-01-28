@@ -50,7 +50,7 @@ namespace NodeModelCharts.Nodes
         {
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "pie chart category labels")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "pie chart values to be compared")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("color", "pie chart color values")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "pie chart color values")));
 
             OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
 

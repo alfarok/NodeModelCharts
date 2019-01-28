@@ -11,5 +11,10 @@
              d:DataContext="{d:DesignInstance local:PieChartControl}">
     <Grid>
         <lvc:PieChart x:Name="PieChart" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}"/>
+        <Thumb Name ="resizeThumb" 
+               Width="10" Height="10" 
+               HorizontalAlignment="Right" 
+               VerticalAlignment="Bottom" 
+               DragDelta="ThumbResizeThumbOnDragDeltaHandler"/>
     </Grid>
 </UserControl>

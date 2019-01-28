@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Controls.Primitives;
 using LiveCharts;
 using LiveCharts.Wpf;
 using NodeModelCharts.Nodes;
@@ -99,6 +100,29 @@ namespace NodeModelCharts.Controls
 
             var selectedSeries = (PieSeries)chartpoint.SeriesView;
             selectedSeries.PushOut = 8;
+        }
+
+        private void ThumbResizeThumbOnDragDeltaHandler(object sender, DragDeltaEventArgs e)
+        {
+            var yAdjust = ActualHeight + e.VerticalChange;
+            var xAdjust = ActualWidth + e.HorizontalChange;
+
+            if (this.Parent.GetType() == typeof(Grid))
+            {
+                var inputGrid = this.Parent as Grid;
+
+                if (xAdjust >= inputGrid.MinWidth)
+                {
+                    Width = xAdjust;
+                    Height = xAdjust;
+                }
+
+                if (yAdjust >= inputGrid.MinHeight)
+                {
+                    Width = yAdjust;
+                    Height = yAdjust;
+                }
+            }
         }
     }
 }
