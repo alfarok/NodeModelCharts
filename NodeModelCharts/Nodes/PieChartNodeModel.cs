@@ -140,7 +140,7 @@ namespace NodeModelCharts.Nodes
                 for (var i = 0; i < keys.Count; i++)
                 {
                     Labels.Add((string)keys[i]);
-                    Values.Add((long)values[i]);
+                    Values.Add(System.Convert.ToDouble(values[i]));
                     Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
                     SolidColorBrush brush = new SolidColorBrush(randomColor);
                     brush.Freeze();
@@ -152,7 +152,7 @@ namespace NodeModelCharts.Nodes
                 for (var i = 0; i < keys.Count; i++)
                 {
                     Labels.Add((string)keys[i]);
-                    Values.Add((long)values[i]);
+                    Values.Add(System.Convert.ToDouble(values[i]));
                     var dynColor = (DSCore.Color)colors[i];
                     var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
                     SolidColorBrush brush = new SolidColorBrush(convertedColor);
