@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 using Autodesk.DesignScript.Runtime;
 using Dynamo.Controls;
@@ -13,28 +14,34 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("Pie")]
+    [NodeName("Basic Line")]
     [NodeCategory("NodeModelCharts.Charts")]
-    [NodeDescription("Create a new Pie Chart.")]
-    [InPortTypes("List<string>", "List<double>", "List<color>")]
+    [NodeDescription("Create a new Basic Line Chart.")]
+    [InPortTypes("List<string>", "List<List<double>>", "List<string>", "List<color>")]
     [OutPortTypes("Dictionary<Label, Value>")]
     [IsDesignScriptCompatible]
-    public class PieChartNodeModel : NodeModel
+    public class BasicLineChartNodeModel : NodeModel
     {
         #region Properties
         private Random rnd = new Random();
+
         /// <summary>
-        /// Pie chart labels.
+        /// A list of Titles for each line to be plotted.
+        /// </summary>
+        public List<string> Titles { get; set; }
+
+        /// <summary>
+        /// List of lists each containing double values to be plotted.
+        /// </summary>
+        public List<List<double>> Values { get; set; }
+
+        /// <summary>
+        /// A list of Labels for the X-Axis.
         /// </summary>
         public List<string> Labels { get; set; }
 
         /// <summary>
-        /// Pie chart values.
-        /// </summary>
-        public List<double> Values { get; set; }
-
-        /// <summary>
-        /// Pie chart color values.
+        /// A list of color values, one for each plotted line.
         /// </summary>
         public List<SolidColorBrush> Colors { get; set; }
         #endregion
@@ -43,17 +50,18 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public PieChartNodeModel()
+        public BasicLineChartNodeModel()
         {
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "pie chart category labels")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "pie chart values to be compared")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "pie chart color values")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("titles", "A list of Titles for each line to be plotted")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "List of lists each containing double values to be plotted against X-Axis values")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of Labels for the X-Axis")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "basic line chart line color values")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("titles:values", "Dictionary containing title:value key-pairs")));
 
             RegisterAllPorts();
 
-            PortDisconnected += PieChartNodeModel_PortDisconnected;
+            PortDisconnected += BasicLineChartNodeModel_PortDisconnected;
 
             ArgumentLacing = LacingStrategy.Disabled;
         }
@@ -62,25 +70,26 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public PieChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
+        public BasicLineChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
         {
-            PortDisconnected += PieChartNodeModel_PortDisconnected;
+            PortDisconnected += BasicLineChartNodeModel_PortDisconnected;
         }
         #endregion
 
         #region Events
-        private void PieChartNodeModel_PortDisconnected(PortModel obj)
+        private void BasicLineChartNodeModel_PortDisconnected(PortModel obj)
         {
             // Clear UI when a input port is disconnected
+            Titles = new List<string>();
             Labels = new List<string>();
-            Values = new List<double>();
+            Values = new List<List<double>>();
             Colors = new List<SolidColorBrush>();
 
             RaisePropertyChanged("DataUpdated");
         }
         #endregion
 
-        #region databridge
+        #region Databridge
         // Use the VMDataBridge to safely retrieve our input values
 
         /// <summary>
@@ -106,45 +115,68 @@ namespace NodeModelCharts.Nodes
             var inputs = data as ArrayList;
 
             // Each of the list inputs are also returned as ArrayLists
-            var keys = inputs[0] as ArrayList;
+            var titles = inputs[0] as ArrayList;
             var values = inputs[1] as ArrayList;
-            var colors = inputs[2] as ArrayList;
+            var labels = inputs[2] as ArrayList;
+            var colors = inputs[3] as ArrayList;
 
             // Only continue if key/values match in length
-            if(keys.Count != values.Count || keys.Count < 1)
+            if (titles.Count != values.Count || titles.Count < 1)
             {
                 return; // TODO - throw exception for warning msg?
             }
 
-            // Update chart properties
+            // Clear current chart values
+            Titles = new List<string>();
+            Values = new List<List<double>>();
             Labels = new List<string>();
-            Values = new List<double>();
             Colors = new List<SolidColorBrush>();
 
-            if (colors.Count != keys.Count)
+            // If color count doesn't match title count use random colors
+            if (colors.Count != titles.Count)
             {
-                for (var i = 0; i < keys.Count; i++)
+                for (var i = 0; i < titles.Count; i++)
                 {
-                    Labels.Add((string)keys[i]);
-                    Values.Add(System.Convert.ToDouble(values[i]));
+                    var outputValues = new List<double>();
+
+                    foreach (double plotVal in values[i] as List<double>)
+                    {
+                        outputValues.Add(plotVal);
+                    }
+
+                    Titles.Add((string)titles[i]);
+                    Values.Add(outputValues);
+
                     Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
                     SolidColorBrush brush = new SolidColorBrush(randomColor);
                     brush.Freeze();
                     Colors.Add(brush);
                 }
+
+                Labels = labels.Cast<string>().ToList();
             }
             else
             {
-                for (var i = 0; i < keys.Count; i++)
+                for (var i = 0; i < titles.Count; i++)
                 {
-                    Labels.Add((string)keys[i]);
-                    Values.Add(System.Convert.ToDouble(values[i]));
+                    var outputValues = new List<double>();
+
+                    foreach (var plotVal in values[i] as ArrayList)
+                    {
+                        outputValues.Add(System.Convert.ToDouble(plotVal));
+                    }
+
+                    Titles.Add((string)titles[i]);
+                    Values.Add(outputValues);
+
                     var dynColor = (DSCore.Color)colors[i];
                     var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
                     SolidColorBrush brush = new SolidColorBrush(convertedColor);
                     brush.Freeze();
                     Colors.Add(brush);
                 }
+
+                Labels = labels.Cast<string>().ToList();
             }
 
             // Notify UI the data has been modified
@@ -169,7 +201,8 @@ namespace NodeModelCharts.Nodes
             // If inputs are not connected return null
             if (InPorts[0].IsConnected == false ||
                 InPorts[1].IsConnected == false ||
-                InPorts[2].IsConnected == false)
+                InPorts[2].IsConnected == false ||
+                InPorts[3].IsConnected == false)
             {
                 return new[]
                 {
@@ -178,8 +211,8 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<double>, List<DSCore.Color>, Dictionary<string, double>>(PieChartFunctions.GetNodeInput),
-                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2] }
+                new Func<List<string>, List<List<double>>, List<string>, List<DSCore.Color>, Dictionary<string, List<double>>>(BasicLineChartFunctions.GetNodeInput),
+                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
             );
 
             return new[]
@@ -198,7 +231,7 @@ namespace NodeModelCharts.Nodes
     /// <summary>
     ///     View customizer for CustomNodeModel Node Model.
     /// </summary>
-    public class PieChartNodeView : INodeViewCustomization<PieChartNodeModel>
+    public class BasicLineChartNodeView : INodeViewCustomization<BasicLineChartNodeModel>
     {
         /// <summary>
         /// At run-time, this method is called during the node 
@@ -206,10 +239,10 @@ namespace NodeModelCharts.Nodes
         /// </summary>
         /// <param name="model">The NodeModel representing the node's core logic.</param>
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>
-        public void CustomizeView(PieChartNodeModel model, NodeView nodeView)
+        public void CustomizeView(BasicLineChartNodeModel model, NodeView nodeView)
         {
-            var pieChartControl = new PieChartControl(model);
-            nodeView.inputGrid.Children.Add(pieChartControl);
+            var basicLineChartControl = new BasicLineChartControl(model);
+            nodeView.inputGrid.Children.Add(basicLineChartControl);
         }
 
         /// <summary>
