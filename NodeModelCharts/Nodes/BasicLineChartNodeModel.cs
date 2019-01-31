@@ -17,8 +17,8 @@ namespace NodeModelCharts.Nodes
     [NodeName("Basic Line")]
     [NodeCategory("NodeModelCharts.Charts")]
     [NodeDescription("Create a new Basic Line Chart.")]
-    [InPortTypes("List<string>", "List<List<double>>", "List<string>", "List<color>")]
-    [OutPortTypes("Dictionary<Label, Value>")]
+    [InPortTypes("List<string>", "List<List<double>>", "List<color>")]
+    [OutPortTypes("Dictionary<string, double>")]
     [IsDesignScriptCompatible]
     public class BasicLineChartNodeModel : NodeModel
     {
@@ -26,19 +26,14 @@ namespace NodeModelCharts.Nodes
         private Random rnd = new Random();
 
         /// <summary>
-        /// A list of Titles for each line to be plotted.
+        /// A list of Labels for each line to be plotted.
         /// </summary>
-        public List<string> Titles { get; set; }
+        public List<string> Labels { get; set; }
 
         /// <summary>
         /// List of lists each containing double values to be plotted.
         /// </summary>
         public List<List<double>> Values { get; set; }
-
-        /// <summary>
-        /// A list of Labels for the X-Axis.
-        /// </summary>
-        public List<string> Labels { get; set; }
 
         /// <summary>
         /// A list of color values, one for each plotted line.
@@ -52,12 +47,11 @@ namespace NodeModelCharts.Nodes
         /// </summary>
         public BasicLineChartNodeModel()
         {
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("titles", "A list of Titles for each line to be plotted")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of string labels for each line to be plotted")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "List of lists each containing double values to be plotted against X-Axis values")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of Labels for the X-Axis")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "basic line chart line color values")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("titles:values", "Dictionary containing title:value key-pairs")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing title:value key-pairs")));
 
             RegisterAllPorts();
 
@@ -80,7 +74,6 @@ namespace NodeModelCharts.Nodes
         private void BasicLineChartNodeModel_PortDisconnected(PortModel obj)
         {
             // Clear UI when a input port is disconnected
-            Titles = new List<string>();
             Labels = new List<string>();
             Values = new List<List<double>>();
             Colors = new List<SolidColorBrush>();
@@ -115,27 +108,25 @@ namespace NodeModelCharts.Nodes
             var inputs = data as ArrayList;
 
             // Each of the list inputs are also returned as ArrayLists
-            var titles = inputs[0] as ArrayList;
+            var labels = inputs[0] as ArrayList;
             var values = inputs[1] as ArrayList;
-            var labels = inputs[2] as ArrayList;
-            var colors = inputs[3] as ArrayList;
+            var colors = inputs[2] as ArrayList;
 
             // Only continue if key/values match in length
-            if (titles.Count != values.Count || titles.Count < 1)
+            if (labels.Count != values.Count || labels.Count < 1)
             {
                 return; // TODO - throw exception for warning msg?
             }
 
             // Clear current chart values
-            Titles = new List<string>();
-            Values = new List<List<double>>();
             Labels = new List<string>();
+            Values = new List<List<double>>();
             Colors = new List<SolidColorBrush>();
 
             // If color count doesn't match title count use random colors
-            if (colors.Count != titles.Count)
+            if (colors.Count != labels.Count)
             {
-                for (var i = 0; i < titles.Count; i++)
+                for (var i = 0; i < labels.Count; i++)
                 {
                     var outputValues = new List<double>();
 
@@ -144,7 +135,7 @@ namespace NodeModelCharts.Nodes
                         outputValues.Add(plotVal);
                     }
 
-                    Titles.Add((string)titles[i]);
+                    Labels.Add((string)labels[i]);
                     Values.Add(outputValues);
 
                     Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
@@ -152,12 +143,10 @@ namespace NodeModelCharts.Nodes
                     brush.Freeze();
                     Colors.Add(brush);
                 }
-
-                Labels = labels.Cast<string>().ToList();
             }
             else
             {
-                for (var i = 0; i < titles.Count; i++)
+                for (var i = 0; i < labels.Count; i++)
                 {
                     var outputValues = new List<double>();
 
@@ -166,7 +155,7 @@ namespace NodeModelCharts.Nodes
                         outputValues.Add(System.Convert.ToDouble(plotVal));
                     }
 
-                    Titles.Add((string)titles[i]);
+                    Labels.Add((string)labels[i]);
                     Values.Add(outputValues);
 
                     var dynColor = (DSCore.Color)colors[i];
@@ -175,8 +164,6 @@ namespace NodeModelCharts.Nodes
                     brush.Freeze();
                     Colors.Add(brush);
                 }
-
-                Labels = labels.Cast<string>().ToList();
             }
 
             // Notify UI the data has been modified
@@ -199,10 +186,9 @@ namespace NodeModelCharts.Nodes
             // Do not throw an exception during AST creation.
 
             // If inputs are not connected return null
-            if (InPorts[0].IsConnected == false ||
-                InPorts[1].IsConnected == false ||
-                InPorts[2].IsConnected == false ||
-                InPorts[3].IsConnected == false)
+            if (!InPorts[0].IsConnected ||
+                !InPorts[1].IsConnected ||
+                !InPorts[2].IsConnected)
             {
                 return new[]
                 {
@@ -211,8 +197,8 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<List<double>>, List<string>, List<DSCore.Color>, Dictionary<string, List<double>>>(BasicLineChartFunctions.GetNodeInput),
-                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
+                new Func<List<string>, List<List<double>>, List<DSCore.Color>, Dictionary<string, List<double>>>(BasicLineChartFunctions.GetNodeInput),
+                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2] }
             );
 
             return new[]

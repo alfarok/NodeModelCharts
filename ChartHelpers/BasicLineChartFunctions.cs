@@ -13,7 +13,7 @@ namespace ChartHelpers
         private BasicLineChartFunctions() { }
 
         [IsVisibleInDynamoLibrary(false)]
-        public static Dictionary<string, List<double>> GetNodeInput(List<string> titles, List<List<double>> values, List<string> labels, List<DSCore.Color> colors)
+        public static Dictionary<string, List<double>> GetNodeInput(List<string> titles, List<List<double>> values, List<DSCore.Color> colors)
         {
             // TODO - just pass input data unmodified instead?
             var output = new Dictionary<string, List<double>>();

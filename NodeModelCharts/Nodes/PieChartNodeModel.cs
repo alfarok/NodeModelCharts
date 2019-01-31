@@ -167,9 +167,9 @@ namespace NodeModelCharts.Nodes
             // Do not throw an exception during AST creation.
 
             // If inputs are not connected return null
-            if (InPorts[0].IsConnected == false ||
-                InPorts[1].IsConnected == false ||
-                InPorts[2].IsConnected == false)
+            if (!InPorts[0].IsConnected ||
+                !InPorts[1].IsConnected ||
+                !InPorts[2].IsConnected)
             {
                 return new[]
                 {

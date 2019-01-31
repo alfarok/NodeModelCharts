@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -15,7 +14,6 @@ namespace NodeModelCharts.Controls
     /// </summary>
     public partial class BasicLineChartControl : UserControl, INotifyPropertyChanged
     {
-        private Func<ChartPoint, string> PointLabel { get; set; }
         private Random rnd = new Random();
 
         private void OnPropertyChanged(string propertyName)
@@ -25,8 +23,7 @@ namespace NodeModelCharts.Controls
 
         public event PropertyChangedEventHandler PropertyChanged;
         public SeriesCollection SeriesCollection { get; set; }
-        public List<string> Labels { get; set; }
-        public Func<double, string> YFormatter { get; set; }
+        //public Func<double, string> YFormatter { get; set; }
 
         public BasicLineChartControl(BasicLineChartNodeModel model)
         {
@@ -35,7 +32,7 @@ namespace NodeModelCharts.Controls
             model.PropertyChanged += NodeModel_PropertyChanged;
 
             // Load sample data if any ports are not connected
-            if (model.InPorts[0].IsConnected == false && model.InPorts[1].IsConnected == false && model.InPorts[2].IsConnected == false)
+            if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
                 SeriesCollection = new SeriesCollection
                 {
@@ -56,14 +53,14 @@ namespace NodeModelCharts.Controls
                     }
                 };
 
-                Labels = new List<string> { "Jan", "Feb", "Mar", "Apr", "May" };
+                //Labels = new List<string> { "Jan", "Feb", "Mar", "Apr", "May" };
                 //YFormatter = value => value.ToString("C");
             }
-            else if (model.InPorts[0].IsConnected == true && model.InPorts[1].IsConnected == true && model.InPorts[2].IsConnected == true && model.InPorts[3].IsConnected)
+            else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
-                if (model.Titles.Count == model.Values.Count && model.Titles.Count > 0)
+                if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
                 {
-                    for (var i = 0; i < model.Titles.Count; i++)
+                    for (var i = 0; i < model.Labels.Count; i++)
                     {
                         var lineValues = new ChartValues<double>();
                         foreach(double value in model.Values[i])
@@ -73,7 +70,7 @@ namespace NodeModelCharts.Controls
 
                         SeriesCollection.Add(new LineSeries
                         {
-                            Title = model.Titles[i],
+                            Title = model.Labels[i],
                             Values = lineValues,
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
@@ -81,10 +78,10 @@ namespace NodeModelCharts.Controls
                             //PointGeometry = DefaultGeometries.Square,
                             //PointGeometrySize = 15
                         });
-
-                        Labels = model.Labels;
                     }
                 }
+
+                DataContext = this;
             }
 
             /*
@@ -102,8 +99,6 @@ namespace NodeModelCharts.Controls
             // Modifying any series values will also animate and update the chart
             SeriesCollection[3].Values.Add(5d);
             */
-
-            DataContext = this;
         }
 
         private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -117,7 +112,7 @@ namespace NodeModelCharts.Controls
                 {
                     BasicLineChart.Series.Clear();
 
-                    for (var i = 0; i < model.Titles.Count; i++)
+                    for (var i = 0; i < model.Labels.Count; i++)
                     {
                         var lineValues = new ChartValues<double>();
                         foreach (double value in model.Values[i])
@@ -127,7 +122,7 @@ namespace NodeModelCharts.Controls
 
                         SeriesCollection.Add(new LineSeries
                         {
-                            Title = model.Titles[i],
+                            Title = model.Labels[i],
                             Values = lineValues,
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
@@ -136,8 +131,6 @@ namespace NodeModelCharts.Controls
                             //PointGeometrySize = 15
                         });
                     }
-
-                    Labels = model.Labels;
                 });
             }
         }
