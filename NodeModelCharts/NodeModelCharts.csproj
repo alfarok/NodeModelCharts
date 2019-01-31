@@ -127,6 +127,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\XYLineChartControl.xaml.cs">
+      <DependentUpon>XYLineChartControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BasicLineChartControl.xaml.cs">
       <DependentUpon>BasicLineChartControl.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,7 @@
     </Compile>
     <Compile Include="Nodes\BasicLineChartNodeModel.cs" />
     <Compile Include="Nodes\PieChartNodeModel.cs" />
+    <Compile Include="Nodes\XYLineChartNodeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +151,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\XYLineChartControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\BasicLineChartControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

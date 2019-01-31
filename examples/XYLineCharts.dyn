@@ -1,0 +1,892 @@
+{
+  "Uuid": "cd47c378-9ea5-457c-ac4c-276eac1559f6",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "XYLineCharts",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"MyLine\"];\n[[0, 1, 2]];\n[[0, slide, 2]];\n[color];",
+      "Id": "ab045872a6e94ba0bace3ff33d518f2e",
+      "Inputs": [
+        {
+          "Id": "46526aafaa6f40e18b2c055c7632b15f",
+          "Name": "slide",
+          "Description": "slide",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "02ae5f4c17164b59ae0ad1d4439e7222",
+          "Name": "color",
+          "Description": "color",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b625945cdae24d3890986bfb0b714d28",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c8bd8a4ada8a4033b634ee75a0841d95",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d0582a2bb962429ba47b057a5bb388db",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "081f09a863f04dc0a0807f4a08fc753c",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.XYLineChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "MyLine"
+      ],
+      "XValues": [
+        [
+          0.0,
+          1.0,
+          2.0
+        ]
+      ],
+      "YValues": [
+        [
+          0.0,
+          -10.0,
+          2.0
+        ]
+      ],
+      "Colors": [
+        "#FFFF7F50"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "942625d834454a6883158d617ec129bc",
+      "Inputs": [
+        {
+          "Id": "3cad02b9d180486aa74ab5fda16870a2",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f2d50b0aed34447986fc9f16ebd67193",
+          "Name": "x-values",
+          "Description": "List of lists each containing double values representing x-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "995f6d0295594d558b8de4ff39c4c2c0",
+          "Name": "y-values",
+          "Description": "List of lists each containing double values representing y-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38a13891f8c04598b8f96b47bd38c885",
+          "Name": "colors",
+          "Description": "XY line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8749ac289e6243638f9c6e054055fe74",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new XY line plot."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": -10,
+      "MaximumValue": 10,
+      "MinimumValue": -10,
+      "StepValue": 1,
+      "Id": "39adf43739d145b2a37d2147d853e88a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b52a8b447c0f48829398bea7f6478ad5",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 255,
+        "G": 127,
+        "B": 80,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "9e8564c82ba34b5c8c1fdfd60758e73b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "51865f8bf012445e89ef38c4f5e288d7",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.Sin@double",
+      "Id": "9d81828286dc4eb2b101457761acddb0",
+      "Inputs": [
+        {
+          "Id": "4e8a7e867da94a81b3daf512d1437ace",
+          "Name": "angle",
+          "Description": "Angle in degrees to take the sine of.\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "130697e8024c42e3862344a3a95c2d3a",
+          "Name": "sin",
+          "Description": "Sine of the angle.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Finds the sine of an angle.\n\nMath.Sin (angle: double): double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RadiansToDegrees@double",
+      "Id": "a16793a85c9f4ccb98a6fa2d319e76e3",
+      "Inputs": [
+        {
+          "Id": "1002c57c89114eadb57ff37430d2d26f",
+          "Name": "radians",
+          "Description": "Angle in radians.\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3cc391fcfef84de48f0134fa29add016",
+          "Name": "degrees",
+          "Description": "Angle in degrees.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Converts an angle in radians to an angle in degrees.\n\nMath.RadiansToDegrees (radians: double): double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.PI",
+      "Id": "3460783976bc4e34a4b7472939ba774e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a0b379a74f4649bc8179acab2c7cb142",
+          "Name": "pi",
+          "Description": "double. The constant Pi.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The mathematical constant Pi, 3.14159...\n\nMath.PI: double"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Range, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "47bc0d765c70403c97c9dd86c0bac6bd",
+      "Inputs": [
+        {
+          "Id": "c115b5059cf14328917fd38b0ca4974b",
+          "Name": "start",
+          "Description": "Number or letter to start the sequence at\r\nDefault value: 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fa9a8ce3a58441e4a582ac54b2b1d00f",
+          "Name": "end",
+          "Description": "Number or letter to end the sequence at\r\nDefault value: 9",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0bd863212c4942ce8ba5f36f074a9681",
+          "Name": "step",
+          "Description": "Space between numbers or letters\r\nDefault value: 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2dd185c0e3574ca5a42d3333aa7e31a5",
+          "Name": "seq",
+          "Description": "New sequence",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers or letters in the specified range."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.PiTimes2",
+      "Id": "87363bdb00f841deae6149eb8d231337",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ae0102b35bac408899e647435c200b89",
+          "Name": "2pi",
+          "Description": "2 times PI.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Pi Constant Multiplied by 2\n\nMath.PiTimes2: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-x;",
+      "Id": "c29bb5ebc08740a7947d2a998706b375",
+      "Inputs": [
+        {
+          "Id": "65de61593c88473c993b1e5abba7f675",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "98dd532f32a146d4a121d27811e08c3b",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x/4;",
+      "Id": "ea2190510e834040b10c9f219d4b6e5f",
+      "Inputs": [
+        {
+          "Id": "d151f2c76c2648d0865d2c82f6e07f91",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "df6c798309c6494ca33714405fc89f7e",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.XYLineChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Sine Curve"
+      ],
+      "XValues": [
+        [
+          -6.28318530717959,
+          -5.4977871437821424,
+          -4.7123889803846941,
+          -3.9269908169872458,
+          -3.141592653589798,
+          -2.35619449019235,
+          -1.5707963267949021,
+          -0.785398163397454,
+          -6E-15,
+          0.785398163397442,
+          1.57079632679489,
+          2.3561944901923382,
+          3.141592653589786,
+          3.9269908169872338,
+          4.7123889803846817,
+          5.49778714378213,
+          6.2831853071795782
+        ]
+      ],
+      "YValues": [
+        [
+          -4.1959708277361507E-15,
+          0.70710678118654458,
+          1.0,
+          0.70710678118655057,
+          4.7625206729684511E-15,
+          -0.7071067811865438,
+          -1.0,
+          -0.70710678118655168,
+          -6E-15,
+          0.707106781186543,
+          1.0,
+          0.707106781186552,
+          6.783798783133177E-15,
+          -0.70710678118654213,
+          -1.0,
+          -0.70710678118655335,
+          -8.2385270480656025E-15
+        ]
+      ],
+      "Colors": [
+        "#FF8A2BE2"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "76467a27c74a4af7aaa7c1358493d74b",
+      "Inputs": [
+        {
+          "Id": "c888b489929f4864bbd988a37f1e5251",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fe42193193434b29a8f58aad2a3f67ad",
+          "Name": "x-values",
+          "Description": "List of lists each containing double values representing x-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "becfaef3b37845ed8f29efdf779fcc71",
+          "Name": "y-values",
+          "Description": "List of lists each containing double values representing y-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4eea856acd30442aad740f114529a9fd",
+          "Name": "colors",
+          "Description": "XY line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5b00ab3df192491ebcdc7ba959c675c4",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new XY line plot."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Sine Curve\"];\n[x];\n[y];\n[color];",
+      "Id": "bd79ded021e94497a702f89e41ef0b32",
+      "Inputs": [
+        {
+          "Id": "c443b9e6e5754fd6a178ae231cfb6db6",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "69de59b29ba847a6921d32e9c3a1c88c",
+          "Name": "y",
+          "Description": "y",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bc96a631c7b6454fa242cfd2e927bf4f",
+          "Name": "color",
+          "Description": "color",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe2409e7ec4d411696a7fbb47d6d21e7",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5056e75d754f4919b2dd125da891afe7",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "43eb8af4f17841dabf0980c226867ebe",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "033c96c3638846cc97e2d235821bdd38",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 138,
+        "G": 43,
+        "B": 226,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "337c3945afb340789817ca0312e27934",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2a9325d7081449b6a67b9e20e54a2009",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b625945cdae24d3890986bfb0b714d28",
+      "End": "3cad02b9d180486aa74ab5fda16870a2",
+      "Id": "3154ecfff7ac4f3fbdc2c4f20f635def"
+    },
+    {
+      "Start": "c8bd8a4ada8a4033b634ee75a0841d95",
+      "End": "f2d50b0aed34447986fc9f16ebd67193",
+      "Id": "042cc86069c14304a27dcf20cf898382"
+    },
+    {
+      "Start": "d0582a2bb962429ba47b057a5bb388db",
+      "End": "995f6d0295594d558b8de4ff39c4c2c0",
+      "Id": "e504b6c7bfd94994990e5482fba42c10"
+    },
+    {
+      "Start": "081f09a863f04dc0a0807f4a08fc753c",
+      "End": "38a13891f8c04598b8f96b47bd38c885",
+      "Id": "f4abe25b16a34823996cb001704fb04c"
+    },
+    {
+      "Start": "b52a8b447c0f48829398bea7f6478ad5",
+      "End": "46526aafaa6f40e18b2c055c7632b15f",
+      "Id": "4fbde329c42d4775908217eecf83b0cd"
+    },
+    {
+      "Start": "51865f8bf012445e89ef38c4f5e288d7",
+      "End": "02ae5f4c17164b59ae0ad1d4439e7222",
+      "Id": "f15020efe50c403ab30408a41434c1cf"
+    },
+    {
+      "Start": "130697e8024c42e3862344a3a95c2d3a",
+      "End": "69de59b29ba847a6921d32e9c3a1c88c",
+      "Id": "02407fb684074b0ba81713d7aa807b6d"
+    },
+    {
+      "Start": "3cc391fcfef84de48f0134fa29add016",
+      "End": "4e8a7e867da94a81b3daf512d1437ace",
+      "Id": "592c43ee2b9a47678f213d8e9b728c35"
+    },
+    {
+      "Start": "a0b379a74f4649bc8179acab2c7cb142",
+      "End": "d151f2c76c2648d0865d2c82f6e07f91",
+      "Id": "d01580539bf943c19b1b3d4d24ba96a7"
+    },
+    {
+      "Start": "2dd185c0e3574ca5a42d3333aa7e31a5",
+      "End": "1002c57c89114eadb57ff37430d2d26f",
+      "Id": "ddd59f289e9a48cb86efc9e1762cdb7b"
+    },
+    {
+      "Start": "2dd185c0e3574ca5a42d3333aa7e31a5",
+      "End": "c443b9e6e5754fd6a178ae231cfb6db6",
+      "Id": "856039012d94419f915d068d7b103dea"
+    },
+    {
+      "Start": "ae0102b35bac408899e647435c200b89",
+      "End": "65de61593c88473c993b1e5abba7f675",
+      "Id": "09121e7b11e543cb9c4e60674cb8e03b"
+    },
+    {
+      "Start": "ae0102b35bac408899e647435c200b89",
+      "End": "fa9a8ce3a58441e4a582ac54b2b1d00f",
+      "Id": "5f1dcc2a93294e1d9774218baba0469e"
+    },
+    {
+      "Start": "98dd532f32a146d4a121d27811e08c3b",
+      "End": "c115b5059cf14328917fd38b0ca4974b",
+      "Id": "61eace8b6bd74b39b853f8dd30cf8b98"
+    },
+    {
+      "Start": "df6c798309c6494ca33714405fc89f7e",
+      "End": "0bd863212c4942ce8ba5f36f074a9681",
+      "Id": "f1d156756f4d4dc1b8e2acb1108ea9df"
+    },
+    {
+      "Start": "fe2409e7ec4d411696a7fbb47d6d21e7",
+      "End": "c888b489929f4864bbd988a37f1e5251",
+      "Id": "b8cfaa2abc4e405c86255f6fea91bbbd"
+    },
+    {
+      "Start": "5056e75d754f4919b2dd125da891afe7",
+      "End": "fe42193193434b29a8f58aad2a3f67ad",
+      "Id": "206e276b47da4f6c9fd83ccefa800b10"
+    },
+    {
+      "Start": "43eb8af4f17841dabf0980c226867ebe",
+      "End": "becfaef3b37845ed8f29efdf779fcc71",
+      "Id": "13651b830be24c8296d9b4ac1ac8d254"
+    },
+    {
+      "Start": "033c96c3638846cc97e2d235821bdd38",
+      "End": "4eea856acd30442aad740f114529a9fd",
+      "Id": "760b3221cfb645fdbb98300a766368f5"
+    },
+    {
+      "Start": "2a9325d7081449b6a67b9e20e54a2009",
+      "End": "bc96a631c7b6454fa242cfd2e927bf4f",
+      "Id": "8c051d83a2bd451e967f5e166ee0764b"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3945",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 1.6876943381564624,
+      "EyeY": 32.4920594333024,
+      "EyeZ": 46.680270976092537,
+      "LookX": 1.2536405354159141,
+      "LookY": 5.4119944695259727,
+      "LookZ": -60.383265076259633,
+      "UpX": -0.00624172541969039,
+      "UpY": 0.95371695074822738,
+      "UpZ": 0.30064101303596263
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ab045872a6e94ba0bace3ff33d518f2e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 306.49609552660263,
+        "Y": 237.01571124002785
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "XY Line",
+        "Id": "942625d834454a6883158d617ec129bc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 547.10590342081446,
+        "Y": 219.90015707627487
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Integer Slider",
+        "Id": "39adf43739d145b2a37d2147d853e88a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -15.111240255587575,
+        "Y": 202.88258019366108
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "9e8564c82ba34b5c8c1fdfd60758e73b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 160.13192060382016,
+        "Y": 263.33254229320551
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.Sin",
+        "Id": "9d81828286dc4eb2b101457761acddb0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 416.37325131848121,
+        "Y": 700.34691298102064
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.RadiansToDegrees",
+        "Id": "a16793a85c9f4ccb98a6fa2d319e76e3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 191.540961816126,
+        "Y": 699.58217730244121
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.PI",
+        "Id": "3460783976bc4e34a4b7472939ba774e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -200.33649399904687,
+        "Y": 691.17007614210559
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Range",
+        "Id": "47bc0d765c70403c97c9dd86c0bac6bd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -9.7824236111050027,
+        "Y": 615.721503976034
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.PiTimes2",
+        "Id": "87363bdb00f841deae6149eb8d231337",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -328.18998314544223,
+        "Y": 641.86561207327657
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c29bb5ebc08740a7947d2a998706b375",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -113.49217729948356,
+        "Y": 594.83645455717669
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ea2190510e834040b10c9f219d4b6e5f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -120.25038218497781,
+        "Y": 695.92928785396612
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "XY Line",
+        "Id": "76467a27c74a4af7aaa7c1358493d74b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 875.87813512972582,
+        "Y": 611.15310755648193
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "bd79ded021e94497a702f89e41ef0b32",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 651.93306843985272,
+        "Y": 626.47435738429988
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "337c3945afb340789817ca0312e27934",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 459.2963934771393,
+        "Y": 784.731524060819
+      }
+    ],
+    "Annotations": [],
+    "X": 540.27694836108356,
+    "Y": -117.69224444039332,
+    "Zoom": 0.9430846702936323
+  }
+}
