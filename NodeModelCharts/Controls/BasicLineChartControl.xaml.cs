@@ -22,7 +22,6 @@ namespace NodeModelCharts.Controls
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public SeriesCollection SeriesCollection { get; set; }
 
         public BasicLineChartControl(BasicLineChartNodeModel model)
         {
@@ -33,24 +32,10 @@ namespace NodeModelCharts.Controls
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
-                SeriesCollection = new SeriesCollection
-                {
-                    new LineSeries
-                    {
-                        Title = "Series 1",
-                        Values = new ChartValues<double> { 4, 6, 5, 2, 4 }
-                    },
-                    new LineSeries
-                    {
-                        Title = "Series 2",
-                        Values = new ChartValues<double> { 6, 7, 3, 4, 6 }
-                    },
-                    new LineSeries
-                    {
-                        Title = "Series 3",
-                        Values = new ChartValues<double> { 4, 2, 7, 2, 7 }
-                    }
-                };
+                //SeriesCollection = new SeriesCollection()
+                BasicLineChart.Series.Add(new LineSeries { Title = "Series 1", Values = new ChartValues<double> { 4, 6, 5, 2, 4 } });
+                BasicLineChart.Series.Add(new LineSeries { Title = "Series 2", Values = new ChartValues<double> { 6, 7, 3, 4, 6 } });
+                BasicLineChart.Series.Add(new LineSeries { Title = "Series 3", Values = new ChartValues<double> { 4, 2, 7, 2, 7 } });
             }
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
@@ -58,16 +43,10 @@ namespace NodeModelCharts.Controls
                 {
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        var lineValues = new ChartValues<double>();
-                        foreach(double value in model.Values[i])
-                        {
-                            lineValues.Add(value);
-                        }
-
-                        SeriesCollection.Add(new LineSeries
+                        BasicLineChart.Series.Add(new LineSeries
                         {
                             Title = model.Labels[i],
-                            Values = lineValues,
+                            Values = new ChartValues<double>(model.Values[i]),
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
                         });
@@ -91,16 +70,10 @@ namespace NodeModelCharts.Controls
 
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        var lineValues = new ChartValues<double>();
-                        foreach (double value in model.Values[i])
-                        {
-                            lineValues.Add(value);
-                        }
-
-                        SeriesCollection.Add(new LineSeries
+                        BasicLineChart.Series.Add(new LineSeries
                         {
                             Title = model.Labels[i],
-                            Values = lineValues,
+                            Values = new ChartValues<double>(model.Values[i]),
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
                         });

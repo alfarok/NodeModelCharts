@@ -11,7 +11,7 @@
              d:DataContext="{d:DesignInstance local:BasicLineChartControl}">
     <Grid>
 
-        <lvc:CartesianChart x:Name="BasicLineChart" Series="{Binding SeriesCollection}" LegendLocation="Bottom" >
+        <lvc:CartesianChart x:Name="BasicLineChart" LegendLocation="Bottom" >
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Values" ></lvc:Axis>
             </lvc:CartesianChart.AxisY>
@@ -24,6 +24,7 @@
                Width="10" Height="10" 
                HorizontalAlignment="Right" 
                VerticalAlignment="Bottom" 
-               DragDelta="ThumbResizeThumbOnDragDeltaHandler"/>
+               DragDelta="ThumbResizeThumbOnDragDeltaHandler"
+        />
     </Grid>
 </UserControl>
