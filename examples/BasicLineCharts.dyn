@@ -1,0 +1,921 @@
+{
+  "Uuid": "9161b8ff-6fd5-4f73-9fc6-9dc3458a47ce",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "BasicLineCharts",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "DesignScript.Builtin.Dictionary": {
+        "Key": "DesignScript.Builtin.Dictionary",
+        "Value": "DesignScriptBuiltin.dll"
+      },
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "Math.PI": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "6e3d966776bb452d8fd6f5ff9ecb4e7a",
+      "Inputs": [
+        {
+          "Id": "2d6ce1f5f0f14a099d1274e8bea6510c",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c87bf4a54a8843f5beceb9c433b7b3f6",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a8bcade519f54bbc82b6259375e982c1",
+          "Name": "item2",
+          "Description": "Item Index #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b41128f6983045d0bae5b6b429731e5f",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 0,
+        "G": 255,
+        "B": 0,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "aea492c523534bcb8ac0b9ca1853bf5d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8b94a6997655425da5eadbd86d54dbe1",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 0,
+        "G": 0,
+        "B": 255,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "255f3dd015974bd19dadac357b7cd715",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "dbf4a6a1a7044cd6a53b07588346d4ce",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 220,
+        "G": 20,
+        "B": 60,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "d1bcd5190c754cd99bb1cb85976ce17c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c7b6f6905872416eaa20b70a3b7b62d0",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Line1\", \"Line2\", \"Line3\"];\n[\n\t[1, 10, 5],\n\t[2, x, 10],\n\t[3, 25, 15]\n];",
+      "Id": "ec22887c369c41999064fb67acb62043",
+      "Inputs": [
+        {
+          "Id": "3eb597a9cf5d4293950ea37b97735610",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1874c9a156024386921918b27c1ad93e",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fb6a793a741d4c0d9317514b2765e577",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 52.900000000000006,
+      "Id": "10e87eb81bb849228d77271b1d392a02",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b534e224cdd8482aabd95f3226b47c52",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "4e71951e6ad24dbd8fce5d9b8a91a64f",
+      "Inputs": [
+        {
+          "Id": "afb4264f8ed64782a83f03e91fcafeb2",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6a058a3ad79b49bb9e8f7be7f4a3907a",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 138,
+        "G": 43,
+        "B": 226,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "a28d6df0f895470c82d34c37479c1494",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0b614bc3044444deab70d039b039c6eb",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Line1\"];\n[values];",
+      "Id": "4c908cec0c64454bb5d8ac543b67656b",
+      "Inputs": [
+        {
+          "Id": "295d1c28be4a47b390bf57f84c7efcc4",
+          "Name": "values",
+          "Description": "values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8779a4afcde0407baee87de6206fe390",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "76cab4f748f84e4fbcf899273eabe3ab",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 1.0,
+      "InputValue": 100.0,
+      "Id": "ae112461000c411fa12f28fbde2e4099",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f9d931f46134a8fbf7f5025801e6417",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RandomList@int",
+      "Id": "4349d6cf802644f595c1adf790abbe2f",
+      "Inputs": [
+        {
+          "Id": "766b4724607a46b696cdbd21d84f7159",
+          "Name": "amount",
+          "Description": "Amount of random numbers the result list will contain.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c4c925533d264c55af0c0f6af2ed9a2a",
+          "Name": "number",
+          "Description": "List of random numbers between 0 and 1.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Produces a list containing the given amount of random doubles in the range of [0, 1).\n\nMath.RandomList (amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[Color.ByARGB(0,0,0,0)];",
+      "Id": "b08250cbec00480b931bf79081a070e8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cde6a615e280480e91ba2c80c8f097ce",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BasicLineChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "7fb92cf0f1704ab08ab57129947e001c",
+      "Inputs": [
+        {
+          "Id": "be2082a396ba415fb4e34b084a193b54",
+          "Name": "titles",
+          "Description": "A list of Titles for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b6a5120197584137963e5bd74bb01ec8",
+          "Name": "values",
+          "Description": "List of lists each containing double values to be plotted against X-Axis values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bcde7a04aa39437ca82d6aa88b425dbf",
+          "Name": "labels",
+          "Description": "A list of Labels for the X-Axis",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3d6a6c09020646c89bb2efa88676d231",
+          "Name": "colors",
+          "Description": "basic line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb2064e2d3ef4a96b79343f5bf0a8fcf",
+          "Name": "titles:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Basic Line Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BasicLineChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Line1",
+        "Line2",
+        "Line3"
+      ],
+      "Values": [
+        [
+          1.0,
+          10.0,
+          5.0
+        ],
+        [
+          2.0,
+          52.900000000000006,
+          10.0
+        ],
+        [
+          3.0,
+          25.0,
+          15.0
+        ]
+      ],
+      "Colors": [
+        "#FFDC143C",
+        "#FF00FF00",
+        "#FF0000FF"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "2d2fd0b537584c5ca00a2dc40710afc0",
+      "Inputs": [
+        {
+          "Id": "c7908d4344c34396a517b3f175ec5ffd",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "682aae56649a431e85683a4fb4db2fb3",
+          "Name": "values",
+          "Description": "List of lists each containing double values to be plotted against X-Axis values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8e8827853aa54631bf156e2a9502d740",
+          "Name": "colors",
+          "Description": "basic line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e3ecf2f529b44067a3b22d7668e335cb",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Basic Line Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BasicLineChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Line1"
+      ],
+      "Values": [
+        [
+          0.59701230265061012,
+          0.13097919902344196,
+          0.38627329719545006,
+          0.13467676571322454,
+          0.0021968437368966843,
+          0.67234930427388717,
+          0.612903641356576,
+          0.15968435032278502,
+          0.1277412609792041,
+          0.26551479346375673,
+          0.881834733244886,
+          0.61324450262507635,
+          0.77474903537647288,
+          0.27953763086327243,
+          0.55007667818575945,
+          0.4603333791998836,
+          0.66162502470501927,
+          0.73842772037648952,
+          0.30966697973649343,
+          0.29821710209279184,
+          0.41319266632813617,
+          0.22794044400935082,
+          0.11368843778673952,
+          0.07224645562108907,
+          0.31562229726259705,
+          0.55071391889393051,
+          0.93761802042723541,
+          0.89252371103154671,
+          0.88900110911997088,
+          0.95152847140632968,
+          0.666780041841222,
+          0.93370605303612819,
+          0.74191245471216383,
+          0.90574630764580621,
+          0.024182420235212158,
+          0.781366117662455,
+          0.3363606298046003,
+          0.65052653134359351,
+          0.867150518515683,
+          0.025584661413722048,
+          0.70305067426667112,
+          0.73818953323093683,
+          0.5203911003285977,
+          0.028175770783878756,
+          0.76583234582367932,
+          0.79688988663111338,
+          0.93050103817624086,
+          0.74459821206731636,
+          0.567190140749882,
+          0.52306541266062545,
+          0.47982464194289626,
+          0.56683906240707216,
+          0.067126220123435471,
+          0.65578160698329169,
+          0.35739745868248746,
+          0.3690718586412593,
+          0.017290761236702448,
+          0.314026841574361,
+          0.81905446845062746,
+          0.4514829248429662,
+          0.73473128384665176,
+          0.72037993032502934,
+          0.27068324120281417,
+          0.17621278957287445,
+          0.59873475162253476,
+          0.94812868020875785,
+          0.87133204791291241,
+          0.86900272773066667,
+          0.25535521062806027,
+          0.76871056052330444,
+          0.12397274939528329,
+          0.011098493361425816,
+          0.87127720186080648,
+          0.28408231832277137,
+          0.59516642782612073,
+          0.67500313309719928,
+          0.70754934368075306,
+          0.085512667002860768,
+          0.30641410979740979,
+          0.51873241063148356,
+          0.62021288071768954,
+          0.19301980835991903,
+          0.32533357028166465,
+          0.36593569645934537,
+          0.47170382946343342,
+          0.0999409794341498,
+          0.86657983291269269,
+          0.08613084772887214,
+          0.54834884896331881,
+          0.65511056159395287,
+          0.76407535642575253,
+          0.022333788230239314,
+          0.831472062892966,
+          0.41566759367271677,
+          0.29085337756707025,
+          0.98267074394164178,
+          0.46750629202812272,
+          0.3441783107557233,
+          0.42944101916134403,
+          0.81770366561492147
+        ]
+      ],
+      "Colors": [
+        "#FF8A2BE2"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "b457c08a228c433897b58a37f1288c22",
+      "Inputs": [
+        {
+          "Id": "cda79d46e63a4348af775f8e02f12015",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7d44a2164457450ea2a139549c0365b0",
+          "Name": "values",
+          "Description": "List of lists each containing double values to be plotted against X-Axis values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "86861fed569b4b0c805b0299b41b9865",
+          "Name": "colors",
+          "Description": "basic line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "61dbb60a8e474db18fc8b1a8f08e9522",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Basic Line Chart."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b41128f6983045d0bae5b6b429731e5f",
+      "End": "8e8827853aa54631bf156e2a9502d740",
+      "Id": "3166a0c72002443cbf65528981d08a22"
+    },
+    {
+      "Start": "8b94a6997655425da5eadbd86d54dbe1",
+      "End": "c87bf4a54a8843f5beceb9c433b7b3f6",
+      "Id": "9dd8c89d1ca74940b57c0dba2a106eb9"
+    },
+    {
+      "Start": "dbf4a6a1a7044cd6a53b07588346d4ce",
+      "End": "a8bcade519f54bbc82b6259375e982c1",
+      "Id": "6f5bd6f2f8ce407eab73ff22053aacd1"
+    },
+    {
+      "Start": "c7b6f6905872416eaa20b70a3b7b62d0",
+      "End": "2d6ce1f5f0f14a099d1274e8bea6510c",
+      "Id": "1632b944361f43e48ef028c2a7cc8a2a"
+    },
+    {
+      "Start": "1874c9a156024386921918b27c1ad93e",
+      "End": "c7908d4344c34396a517b3f175ec5ffd",
+      "Id": "d98e007df6fd462dabd688a1fe629bb5"
+    },
+    {
+      "Start": "fb6a793a741d4c0d9317514b2765e577",
+      "End": "682aae56649a431e85683a4fb4db2fb3",
+      "Id": "f119aebce4d140d88c16a1bf009483b8"
+    },
+    {
+      "Start": "b534e224cdd8482aabd95f3226b47c52",
+      "End": "3eb597a9cf5d4293950ea37b97735610",
+      "Id": "aaa6742bce7f43d8b2655537d531e4cc"
+    },
+    {
+      "Start": "6a058a3ad79b49bb9e8f7be7f4a3907a",
+      "End": "86861fed569b4b0c805b0299b41b9865",
+      "Id": "2d1084b763cd44cb86bfc6a5a393b279"
+    },
+    {
+      "Start": "0b614bc3044444deab70d039b039c6eb",
+      "End": "afb4264f8ed64782a83f03e91fcafeb2",
+      "Id": "d169d330159945d2b8f5850ccad57d0f"
+    },
+    {
+      "Start": "8779a4afcde0407baee87de6206fe390",
+      "End": "cda79d46e63a4348af775f8e02f12015",
+      "Id": "efebecddb612430881087118c3ab3cfe"
+    },
+    {
+      "Start": "76cab4f748f84e4fbcf899273eabe3ab",
+      "End": "7d44a2164457450ea2a139549c0365b0",
+      "Id": "71f0d0f2183b423bb876488b6204d7b4"
+    },
+    {
+      "Start": "8f9d931f46134a8fbf7f5025801e6417",
+      "End": "766b4724607a46b696cdbd21d84f7159",
+      "Id": "195797e8e6b64ee3b323e61dd822c5c7"
+    },
+    {
+      "Start": "c4c925533d264c55af0c0f6af2ed9a2a",
+      "End": "295d1c28be4a47b390bf57f84c7efcc4",
+      "Id": "0ed6b931760f4c0897a0ad9e1307aadb"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3945",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "6e3d966776bb452d8fd6f5ff9ecb4e7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 407.76337614852855,
+        "Y": 1211.1774714155572
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "aea492c523534bcb8ac0b9ca1853bf5d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 238.42500348738065,
+        "Y": 1237.6511381560601
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "255f3dd015974bd19dadac357b7cd715",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 238.425003487381,
+        "Y": 1329.94304706573
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "d1bcd5190c754cd99bb1cb85976ce17c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 238.42500348738065,
+        "Y": 1147.1726533747
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ec22887c369c41999064fb67acb62043",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 239.81188267369845,
+        "Y": 958.09774829190042
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider",
+        "Id": "10e87eb81bb849228d77271b1d392a02",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -75.732311827447916,
+        "Y": 953.43714415062755
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "4e71951e6ad24dbd8fce5d9b8a91a64f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 400.83011303711191,
+        "Y": 1552.3752112677191
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "a28d6df0f895470c82d34c37479c1494",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 259.46934194772336,
+        "Y": 1552.0647340266491
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "4c908cec0c64454bb5d8ac543b67656b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 356.70045630008894,
+        "Y": 1454.1909908126404
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider",
+        "Id": "ae112461000c411fa12f28fbde2e4099",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -192.23752172953368,
+        "Y": 1448.4682017665732
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.RandomList",
+        "Id": "4349d6cf802644f595c1adf790abbe2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 125.94279300301037,
+        "Y": 1449.4672900169132
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "b08250cbec00480b931bf79081a070e8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 293.76531646064012,
+        "Y": 1643.7908025462486
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Basic Line",
+        "Id": "7fb92cf0f1704ab08ab57129947e001c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 605.815879203788,
+        "Y": 539.99488558173744
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Basic Line",
+        "Id": "2d2fd0b537584c5ca00a2dc40710afc0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 601.80557146009528,
+        "Y": 953.00938155861354
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Basic Line",
+        "Id": "b457c08a228c433897b58a37f1288c22",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 587.53110356678212,
+        "Y": 1446.5746134765475
+      }
+    ],
+    "Annotations": [],
+    "X": 625.64431757159628,
+    "Y": -339.85109165896063,
+    "Zoom": 0.66581109967480578
+  }
+}
