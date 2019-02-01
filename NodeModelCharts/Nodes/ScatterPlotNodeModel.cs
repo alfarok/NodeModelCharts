@@ -13,13 +13,13 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("Basic Line")]
+    [NodeName("Scatter Plot")]
     [NodeCategory("NodeModelCharts.Charts")]
-    [NodeDescription("Create a new Basic Line Chart.")]
-    [InPortTypes("List<string>", "List<List<double>>", "List<color>")]
+    [NodeDescription("Create a new scatter plot.")]
+    [InPortTypes("List<string>", "List<List<double>>", "List<List<double>>", "List<color>")]
     [OutPortTypes("Dictionary<string, double>")]
     [IsDesignScriptCompatible]
-    public class BasicLineChartNodeModel : NodeModel
+    public class ScatterPlotNodeModel : NodeModel
     {
         #region Properties
         private Random rnd = new Random();
@@ -30,9 +30,14 @@ namespace NodeModelCharts.Nodes
         public List<string> Labels { get; set; }
 
         /// <summary>
-        /// List of lists each containing double values to be plotted.
+        /// List of lists each containing double values representing x-coordinates.
         /// </summary>
-        public List<List<double>> Values { get; set; }
+        public List<List<double>> XValues { get; set; }
+
+        /// <summary>
+        /// List of lists each containing double values representing y-coordinates.
+        /// </summary>
+        public List<List<double>> YValues { get; set; }
 
         /// <summary>
         /// A list of color values, one for each plotted line.
@@ -44,17 +49,18 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public BasicLineChartNodeModel()
+        public ScatterPlotNodeModel()
         {
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of string labels for each line to be plotted")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "List of lists each containing double values to be plotted against X-Axis values")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "basic line chart line color values")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of string labels for each group of points to be plotted")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("x-values", "A list of lists each containing double values representing x-coordinates")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("y-values", "A list of lists each containing double values representing y-coordinates")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "A list of color values for each group of points")));
 
             OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing title:value key-pairs")));
 
             RegisterAllPorts();
 
-            PortDisconnected += BasicLineChartNodeModel_PortDisconnected;
+            PortDisconnected += XYLineChartNodeModel_PortDisconnected;
 
             ArgumentLacing = LacingStrategy.Disabled;
         }
@@ -63,18 +69,19 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public BasicLineChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
+        public ScatterPlotNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
         {
-            PortDisconnected += BasicLineChartNodeModel_PortDisconnected;
+            PortDisconnected += XYLineChartNodeModel_PortDisconnected;
         }
         #endregion
 
         #region Events
-        private void BasicLineChartNodeModel_PortDisconnected(PortModel obj)
+        private void XYLineChartNodeModel_PortDisconnected(PortModel obj)
         {
             // Clear UI when a input port is disconnected
             Labels = new List<string>();
-            Values = new List<List<double>>();
+            XValues = new List<List<double>>();
+            YValues = new List<List<double>>();
             Colors = new List<SolidColorBrush>();
 
             RaisePropertyChanged("DataUpdated");
@@ -108,18 +115,20 @@ namespace NodeModelCharts.Nodes
 
             // Each of the list inputs are also returned as ArrayLists
             var labels = inputs[0] as ArrayList;
-            var values = inputs[1] as ArrayList;
-            var colors = inputs[2] as ArrayList;
+            var xValues = inputs[1] as ArrayList;
+            var yValues = inputs[2] as ArrayList;
+            var colors = inputs[3] as ArrayList;
 
             // Only continue if key/values match in length
-            if (labels.Count != values.Count || labels.Count < 1)
+            if (labels.Count != xValues.Count || xValues.Count != yValues.Count || labels.Count < 1)
             {
                 return; // TODO - throw exception for warning msg?
             }
 
             // Clear current chart values
             Labels = new List<string>();
-            Values = new List<List<double>>();
+            XValues = new List<List<double>>();
+            YValues = new List<List<double>>();
             Colors = new List<SolidColorBrush>();
 
             // If color count doesn't match title count use random colors
@@ -127,15 +136,21 @@ namespace NodeModelCharts.Nodes
             {
                 for (var i = 0; i < labels.Count; i++)
                 {
-                    var outputValues = new List<double>();
+                    var outputXValues = new List<double>();
+                    var outputYValues = new List<double>();
 
-                    foreach (var plotVal in values[i] as ArrayList)
+                    var unpackedXValues = xValues[i] as ArrayList;
+                    var unpackedYValues = yValues[i] as ArrayList;
+
+                    for (var j = 0; j < unpackedXValues.Count; j++)
                     {
-                        outputValues.Add(System.Convert.ToDouble(plotVal));
+                        outputXValues.Add(Convert.ToDouble(unpackedXValues[j]));
+                        outputYValues.Add(Convert.ToDouble(unpackedYValues[j]));
                     }
 
                     Labels.Add((string)labels[i]);
-                    Values.Add(outputValues);
+                    XValues.Add(outputXValues);
+                    YValues.Add(outputYValues);
 
                     Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
                     SolidColorBrush brush = new SolidColorBrush(randomColor);
@@ -143,19 +158,26 @@ namespace NodeModelCharts.Nodes
                     Colors.Add(brush);
                 }
             }
+            // Else all inputs should be consistent in length
             else
             {
                 for (var i = 0; i < labels.Count; i++)
                 {
-                    var outputValues = new List<double>();
+                    var outputXValues = new List<double>();
+                    var outputYValues = new List<double>();
 
-                    foreach (var plotVal in values[i] as ArrayList)
+                    var unpackedXValues = xValues[i] as ArrayList;
+                    var unpackedYValues = yValues[i] as ArrayList;
+
+                    for (var j = 0; j < unpackedXValues.Count; j++)
                     {
-                        outputValues.Add(System.Convert.ToDouble(plotVal));
+                        outputXValues.Add(Convert.ToDouble(unpackedXValues[j]));
+                        outputYValues.Add(Convert.ToDouble(unpackedYValues[j]));
                     }
 
                     Labels.Add((string)labels[i]);
-                    Values.Add(outputValues);
+                    XValues.Add(outputXValues);
+                    YValues.Add(outputYValues);
 
                     var dynColor = (DSCore.Color)colors[i];
                     var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
@@ -187,7 +209,8 @@ namespace NodeModelCharts.Nodes
             // If inputs are not connected return null
             if (!InPorts[0].IsConnected ||
                 !InPorts[1].IsConnected ||
-                !InPorts[2].IsConnected)
+                !InPorts[2].IsConnected ||
+                !InPorts[3].IsConnected)
             {
                 return new[]
                 {
@@ -196,8 +219,8 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<List<double>>, List<DSCore.Color>, Dictionary<string, List<double>>>(BasicLineChartFunctions.GetNodeInput),
-                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2] }
+                new Func<List<string>, List<List<double>>, List<List<double>>, List<DSCore.Color>, Dictionary<string, List<double>>>(ScatterPlotFunctions.GetNodeInput),
+                new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
             );
 
             return new[]
@@ -216,7 +239,7 @@ namespace NodeModelCharts.Nodes
     /// <summary>
     ///     View customizer for CustomNodeModel Node Model.
     /// </summary>
-    public class BasicLineChartNodeView : INodeViewCustomization<BasicLineChartNodeModel>
+    public class ScatterPlotNodeView : INodeViewCustomization<ScatterPlotNodeModel>
     {
         /// <summary>
         /// At run-time, this method is called during the node 
@@ -224,10 +247,10 @@ namespace NodeModelCharts.Nodes
         /// </summary>
         /// <param name="model">The NodeModel representing the node's core logic.</param>
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>
-        public void CustomizeView(BasicLineChartNodeModel model, NodeView nodeView)
+        public void CustomizeView(ScatterPlotNodeModel model, NodeView nodeView)
         {
-            var basicLineChartControl = new BasicLineChartControl(model);
-            nodeView.inputGrid.Children.Add(basicLineChartControl);
+            var scatterPlotControl = new ScatterPlotControl(model);
+            nodeView.inputGrid.Children.Add(scatterPlotControl);
         }
 
         /// <summary>

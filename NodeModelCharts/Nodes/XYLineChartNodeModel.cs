@@ -139,13 +139,13 @@ namespace NodeModelCharts.Nodes
                     var outputXValues = new List<double>();
                     var outputYValues = new List<double>();
 
-                    var unpackedXValues = xValues[i] as List<double>;
-                    var unpackedYValues = yValues[i] as List<double>;
+                    var unpackedXValues = xValues[i] as ArrayList;
+                    var unpackedYValues = yValues[i] as ArrayList;
 
                     for (var j = 0; j < unpackedXValues.Count; j++)
                     {
-                        outputXValues.Add(unpackedXValues[j]);
-                        outputYValues.Add(unpackedYValues[j]);
+                        outputXValues.Add(Convert.ToDouble(unpackedXValues[j]));
+                        outputYValues.Add(Convert.ToDouble(unpackedYValues[j]));
                     }
 
                     Labels.Add((string)labels[i]);
