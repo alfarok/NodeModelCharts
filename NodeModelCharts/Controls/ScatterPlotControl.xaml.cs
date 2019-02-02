@@ -31,6 +31,13 @@ namespace NodeModelCharts.Controls
 
             model.PropertyChanged += NodeModel_PropertyChanged;
 
+            BuildUI(model);
+
+            DataContext = this;
+        }
+
+        private void BuildUI(ScatterPlotNodeModel model)
+        {
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected && !model.InPorts[3].IsConnected)
             {
@@ -63,7 +70,7 @@ namespace NodeModelCharts.Controls
                     // For each set of points
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        
+
                         ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
 
                         // For each x-value list
@@ -87,8 +94,6 @@ namespace NodeModelCharts.Controls
                     ScatterPlot.Series.AddRange(plots);
                 }
             }
-
-            DataContext = this;
         }
 
         private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

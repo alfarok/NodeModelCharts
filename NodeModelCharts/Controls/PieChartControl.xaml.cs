@@ -33,14 +33,21 @@ namespace NodeModelCharts.Controls
 
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-            if(!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
+            BuildUI(model);
+
+            DataContext = this;
+        }
+
+        private void BuildUI(PieChartNodeModel model)
+        {
+            if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
                 PieChart.Series.Add(new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
                 PieChart.Series.Add(new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
                 PieChart.Series.Add(new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
             }
 
-            else if(model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
+            else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
                 if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
                 {
@@ -57,8 +64,6 @@ namespace NodeModelCharts.Controls
                     }
                 }
             }
-
-            DataContext = this;
         }
 
         private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -31,24 +31,49 @@ namespace NodeModelCharts.Controls
 
             model.PropertyChanged += NodeModel_PropertyChanged;
 
+            BuildUI(model);
+
+            DataContext = this;
+        }
+
+        private void BuildUI(XYLineChartNodeModel model)
+        {
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected && !model.InPorts[3].IsConnected)
             {
-                var defaultXValues = new List<double>() { 0, 5, 10, 15, 20 };
-                var defaultYValues = new List<double>() { 0, 2, 4, 6, 8 };
-
-                ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
-
-                for (int i = 0; i < defaultXValues.Count; i++)
+                var defaultXValues = new List<List<double>>()
                 {
-                    points.Add(new ObservablePoint
+                    new List<double>(){ 0, 1, 2, 3 },
+                    new List<double>(){ 0, 1, 2, 3 },
+                    new List<double>(){ 0, 1, 2, 3 }
+                };
+
+                var defaultYValues = new List<List<double>>()
+                {
+                    new List<double>(){ 0, 1, 2, 3 },
+                    new List<double>(){ 1, 2, 3, 4 },
+                    new List<double>(){ 2, 3, 4, 5 }
+                };
+
+                for (var i = 0; i < defaultXValues.Count; i++)
+                {
+                    ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
+
+                    for (int j = 0; j < defaultXValues[i].Count; j++)
                     {
-                        X = defaultXValues[i],
-                        Y = defaultYValues[i]
+                        points.Add(new ObservablePoint
+                        {
+                            X = defaultXValues[i][j],
+                            Y = defaultYValues[i][j]
+                        });
+                    }
+
+                    XYLineChart.Series.Add(new LineSeries
+                    {
+                        Values = points,
+                        Fill = Brushes.Transparent
                     });
                 }
-
-                XYLineChart.Series.Add(new LineSeries { Title = "Plot 1", Values = points, Fill = Brushes.Transparent });
             }
             // Else load input data
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected && model.InPorts[3].IsConnected)
@@ -78,8 +103,6 @@ namespace NodeModelCharts.Controls
                     }
                 }
             }
-
-            DataContext = this;
         }
 
         private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

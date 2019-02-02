@@ -29,6 +29,13 @@ namespace NodeModelCharts.Controls
 
             model.PropertyChanged += NodeModel_PropertyChanged;
 
+            BuildUI(model);
+
+            DataContext = this;
+        }
+
+        private void BuildUI(BasicLineChartNodeModel model)
+        {
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
@@ -53,8 +60,6 @@ namespace NodeModelCharts.Controls
                     }
                 }
             }
-
-            DataContext = this;
         }
 
         private void NodeModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
