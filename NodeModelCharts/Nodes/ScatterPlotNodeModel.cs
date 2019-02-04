@@ -76,15 +76,18 @@ namespace NodeModelCharts.Nodes
         #endregion
 
         #region Events
-        private void XYLineChartNodeModel_PortDisconnected(PortModel obj)
+        private void XYLineChartNodeModel_PortDisconnected(PortModel port)
         {
             // Clear UI when a input port is disconnected
-            Labels = new List<string>();
-            XValues = new List<List<double>>();
-            YValues = new List<List<double>>();
-            Colors = new List<SolidColorBrush>();
+            if(port.PortType == PortType.Input)
+            {
+                Labels = new List<string>();
+                XValues = new List<List<double>>();
+                YValues = new List<List<double>>();
+                Colors = new List<SolidColorBrush>();
 
-            RaisePropertyChanged("DataUpdated");
+                RaisePropertyChanged("DataUpdated");
+            }
         }
         #endregion
 
@@ -219,7 +222,7 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<List<double>>, List<List<double>>, List<DSCore.Color>, Dictionary<string, List<double>>>(ScatterPlotFunctions.GetNodeInput),
+                new Func<List<string>, List<List<double>>, List<List<double>>, List<DSCore.Color>, Dictionary<string, Dictionary<string, List<double>>>>(ScatterPlotFunctions.GetNodeInput),
                 new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
             );
 

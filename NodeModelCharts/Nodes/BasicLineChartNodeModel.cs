@@ -70,14 +70,18 @@ namespace NodeModelCharts.Nodes
         #endregion
 
         #region Events
-        private void BasicLineChartNodeModel_PortDisconnected(PortModel obj)
+        private void BasicLineChartNodeModel_PortDisconnected(PortModel port)
         {
             // Clear UI when a input port is disconnected
-            Labels = new List<string>();
-            Values = new List<List<double>>();
-            Colors = new List<SolidColorBrush>();
+            // Clear UI when a input port is disconnected
+            if (port.PortType == PortType.Input)
+            {
+                Labels = new List<string>();
+                Values = new List<List<double>>();
+                Colors = new List<SolidColorBrush>();
 
-            RaisePropertyChanged("DataUpdated");
+                RaisePropertyChanged("DataUpdated");
+            }
         }
         #endregion
 

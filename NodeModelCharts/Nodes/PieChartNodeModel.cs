@@ -69,14 +69,17 @@ namespace NodeModelCharts.Nodes
         #endregion
 
         #region Events
-        private void PieChartNodeModel_PortDisconnected(PortModel obj)
+        private void PieChartNodeModel_PortDisconnected(PortModel port)
         {
             // Clear UI when a input port is disconnected
-            Labels = new List<string>();
-            Values = new List<double>();
-            Colors = new List<SolidColorBrush>();
+            if (port.PortType == PortType.Input)
+            {
+                Labels = new List<string>();
+                Values = new List<double>();
+                Colors = new List<SolidColorBrush>();
 
-            RaisePropertyChanged("DataUpdated");
+                RaisePropertyChanged("DataUpdated");
+            }
         }
         #endregion
 
