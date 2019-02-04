@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Controls;
 using Autodesk.DesignScript.Runtime;
 using Dynamo.Controls;
 using Dynamo.Graph.Nodes;
 using Dynamo.Wpf;
 using ProtoCore.AST.AssociativeAST;
 using NodeModelCharts.Controls;
+using NodeModelCharts.Utilites;
 using Newtonsoft.Json;
 using ChartHelpers;
 
@@ -244,6 +247,8 @@ namespace NodeModelCharts.Nodes
     /// </summary>
     public class XYLineChartNodeView : INodeViewCustomization<XYLineChartNodeModel>
     {
+        private XYLineChartControl xyLineChartControl;
+
         /// <summary>
         /// At run-time, this method is called during the node 
         /// creation. Add custom UI element to the node view.
@@ -252,8 +257,20 @@ namespace NodeModelCharts.Nodes
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>
         public void CustomizeView(XYLineChartNodeModel model, NodeView nodeView)
         {
-            var xyLineChartControl = new XYLineChartControl(model);
+            xyLineChartControl = new XYLineChartControl(model);
             nodeView.inputGrid.Children.Add(xyLineChartControl);
+
+            MenuItem exportImage = new MenuItem();
+            exportImage.Header = "Export Chart as Image";
+            exportImage.Click += ExportImage_Click;
+
+            var contextMenu = (nodeView.Content as Grid).ContextMenu;
+            contextMenu.Items.Add(exportImage);
+        }
+
+        private void ExportImage_Click(object sender, RoutedEventArgs e)
+        {
+            Export.ToPng(xyLineChartControl);
         }
 
         /// <summary>
