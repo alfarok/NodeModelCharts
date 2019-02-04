@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarChartFunctions.cs" />
     <Compile Include="ScatterPlotFunctions.cs" />
     <Compile Include="XYLineChartFunctions.cs" />
     <Compile Include="BasicLineChartFunctions.cs" />

@@ -1,0 +1,388 @@
+{
+  "Uuid": "9161b8ff-6fd5-4f73-9fc6-9dc3458a47ce",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "BarCharts",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BarChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Basic Sample"
+      ],
+      "Values": [
+        [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ]
+      ],
+      "Colors": [
+        "#FFE2166D"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "0d53f0ad6aaf461ab4683898d2521da6",
+      "Inputs": [
+        {
+          "Id": "6cf3b1887555477ab1de0e6e199cc01d",
+          "Name": "labels",
+          "Description": "a list of bar chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9cbe5e73f6464d25874e1feefb9b2b1d",
+          "Name": "values",
+          "Description": "a list of lists containing values for each bar in a given category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e3a56f2ff0804d8d8faae9fb41d9b2b6",
+          "Name": "colors",
+          "Description": "a list of colors for each unique bar in a category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1b7dca0cb64a47d0955bfb14fe567455",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Bar Chart."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Basic Sample\"];\n[[1, 2, 3, 4]];\n[];",
+      "Id": "77c4f01e6d0d450d903237779ac5da77",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "51061cf86894471c93ff49ab5d17f62c",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d95514ad75f4552afe9336484fa801a",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e0920af746fe40409102c0e5674e3594",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BarChartNodeModel, NodeModelCharts",
+      "Labels": [
+        "Item 1",
+        "Item 2",
+        "Item 3"
+      ],
+      "Values": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          3.0,
+          4.0
+        ],
+        [
+          5.0,
+          6.0
+        ]
+      ],
+      "Colors": [
+        "#FFFF0000",
+        "#FF00FF00",
+        "#FF0000FF"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "cfcc05466b5d4a1f831b29f669eb49ae",
+      "Inputs": [
+        {
+          "Id": "7f267a2fdf99400fa4ce5edd35f63176",
+          "Name": "labels",
+          "Description": "a list of bar chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d52d583718a4bcc98ad4b459952b6e8",
+          "Name": "values",
+          "Description": "a list of lists containing values for each bar in a given category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7d386e35e52f49809b9d430199b208f0",
+          "Name": "colors",
+          "Description": "a list of colors for each unique bar in a category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "42a06cc419b64786aed5604e9d83bef4",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Bar Chart."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Item 1\", \"Item 2\", \"Item 3\"];\n[[1, 2], [3, 4], [5, 6]];\n[\n\tColor.ByARGB(255, 255, 0, 0),\n\tColor.ByARGB(255, 0, 255, 0),\n\tColor.ByARGB(255, 0, 0, 255)\n];",
+      "Id": "a9de8802e3e644db9a8fed19fb582d04",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f2c4efcd12dc45f6abdc5918ece62de5",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cfef1292f4d94bc8aa14721b397f1092",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3fa457ec407e476187d69e4e28de559d",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BarChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "1dd67fa415604734bb7e37df87ebf41a",
+      "Inputs": [
+        {
+          "Id": "701962e546ae40119b60651e5adca569",
+          "Name": "labels",
+          "Description": "a list of bar chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5ba379c1a32a4e6d8985585c92305433",
+          "Name": "values",
+          "Description": "a list of lists containing values for each bar in a given category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a197948c853046e8af4fb30165912f19",
+          "Name": "colors",
+          "Description": "a list of colors for each unique bar in a category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff0bfd12351940238fba59af54351f64",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Bar Chart."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "51061cf86894471c93ff49ab5d17f62c",
+      "End": "6cf3b1887555477ab1de0e6e199cc01d",
+      "Id": "c043fad186b5431e8a1a34cc176ba3d2"
+    },
+    {
+      "Start": "9d95514ad75f4552afe9336484fa801a",
+      "End": "9cbe5e73f6464d25874e1feefb9b2b1d",
+      "Id": "d8dcf1246f344b9fad10bf7fe09f0188"
+    },
+    {
+      "Start": "e0920af746fe40409102c0e5674e3594",
+      "End": "e3a56f2ff0804d8d8faae9fb41d9b2b6",
+      "Id": "fbb93fb25d74489e8efab6044f7db935"
+    },
+    {
+      "Start": "f2c4efcd12dc45f6abdc5918ece62de5",
+      "End": "7f267a2fdf99400fa4ce5edd35f63176",
+      "Id": "bb635f87a77142b08361e64d35060934"
+    },
+    {
+      "Start": "cfef1292f4d94bc8aa14721b397f1092",
+      "End": "2d52d583718a4bcc98ad4b459952b6e8",
+      "Id": "53a87aab0e744224b575ad7987315606"
+    },
+    {
+      "Start": "3fa457ec407e476187d69e4e28de559d",
+      "End": "7d386e35e52f49809b9d430199b208f0",
+      "Id": "4d42d12a4a4a49878475f2db997fb0c5"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3994",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Bar",
+        "Id": "0d53f0ad6aaf461ab4683898d2521da6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 550.170177231054,
+        "Y": 94.25
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "77c4f01e6d0d450d903237779ac5da77",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 354.5,
+        "Y": 107.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Bar",
+        "Id": "cfcc05466b5d4a1f831b29f669eb49ae",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 550.170177231054,
+        "Y": 460.56505224886894
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a9de8802e3e644db9a8fed19fb582d04",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 222.5,
+        "Y": 474.24314940310774
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Bar",
+        "Id": "1dd67fa415604734bb7e37df87ebf41a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 550.170177231054,
+        "Y": -272.22300787600835
+      }
+    ],
+    "Annotations": [],
+    "X": 464.63932751488721,
+    "Y": 176.026203917538,
+    "Zoom": 0.44028875215393004
+  }
+}
