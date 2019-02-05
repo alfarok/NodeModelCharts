@@ -84,10 +84,10 @@ namespace NodeModelCharts.Nodes
             // Clear UI when a input port is disconnected
             if (port.PortType == PortType.Input)
             {
-                Labels = new List<string>();
-                XValues = new List<List<double>>();
-                YValues = new List<List<double>>();
-                Colors = new List<SolidColorBrush>();
+                Labels.Clear();
+                XValues.Clear();
+                YValues.Clear();
+                Colors.Clear();
 
                 RaisePropertyChanged("DataUpdated");
             }
