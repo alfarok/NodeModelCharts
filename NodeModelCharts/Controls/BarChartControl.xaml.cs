@@ -37,7 +37,7 @@ namespace NodeModelCharts.Controls
         {
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
-                var seriesCollection = new SeriesCollection
+                BarChart.Series = new SeriesCollection
                 {
                     new ColumnSeries
                     {
@@ -55,22 +55,24 @@ namespace NodeModelCharts.Controls
                         Values = new ChartValues<double> { 15, 18, 21, 24 }
                     }
                 };
-
-                BarChart.Series = seriesCollection;
             }
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
                 if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
                 {
+                    var seriesRange = new ColumnSeries[model.Labels.Count];
+
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        BarChart.Series.Add(new ColumnSeries
+                        seriesRange[i] = new ColumnSeries
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double>(model.Values[i]),
                             Fill = model.Colors[i]
-                        });
+                        };
                     }
+
+                    BarChart.Series.AddRange(seriesRange);
                 }
             }
         }
@@ -84,17 +86,20 @@ namespace NodeModelCharts.Controls
                 // Invoke on UI thread
                 this.Dispatcher.Invoke(() =>
                 {
-                    BarChart.Series.Clear();
+                    var seriesRange = new ColumnSeries[model.Labels.Count];
 
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        BarChart.Series.Add(new ColumnSeries
+                        seriesRange[i] = new ColumnSeries
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double>(model.Values[i]),
                             Fill = model.Colors[i]
-                        });
+                        };
                     }
+
+                    BarChart.Series.Clear();
+                    BarChart.Series.AddRange(seriesRange);
                 });
             }
         }

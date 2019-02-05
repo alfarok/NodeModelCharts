@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -41,25 +40,27 @@ namespace NodeModelCharts.Controls
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected && !model.InPorts[3].IsConnected)
             {
-                var defaultXValues = new List<List<double>>()
+                var defaultXValues = new double[][]
                 {
-                    new List<double>(){ 0, 1, 2, 3 },
-                    new List<double>(){ 0, 1, 2, 3 },
-                    new List<double>(){ 0, 1, 2, 3 }
+                    new double[]{ 0, 1, 2, 3 },
+                    new double[]{ 0, 1, 2, 3 },
+                    new double[]{ 0, 1, 2, 3 }
                 };
 
-                var defaultYValues = new List<List<double>>()
+                var defaultYValues = new double[][]
                 {
-                    new List<double>(){ 0, 1, 2, 3 },
-                    new List<double>(){ 1, 2, 3, 4 },
-                    new List<double>(){ 2, 3, 4, 5 }
+                    new double[]{ 0, 1, 2, 3 },
+                    new double[]{ 1, 2, 3, 4 },
+                    new double[]{ 2, 3, 4, 5 }
                 };
 
-                for (var i = 0; i < defaultXValues.Count; i++)
+                LineSeries[] seriesRange = new LineSeries[defaultXValues.Length];
+
+                for (var i = 0; i < defaultXValues.Length; i++)
                 {
                     ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
 
-                    for (int j = 0; j < defaultXValues[i].Count; j++)
+                    for (int j = 0; j < defaultXValues[i].Length; j++)
                     {
                         points.Add(new ObservablePoint
                         {
@@ -68,18 +69,22 @@ namespace NodeModelCharts.Controls
                         });
                     }
 
-                    XYLineChart.Series.Add(new LineSeries
+                    seriesRange[i] = new LineSeries
                     {
                         Values = points,
                         Fill = Brushes.Transparent
-                    });
+                    };
                 }
+
+                XYLineChart.Series.AddRange(seriesRange);
             }
             // Else load input data
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected && model.InPorts[3].IsConnected)
             {
                 if (model.Labels.Count == model.XValues.Count && model.XValues.Count == model.YValues.Count && model.Labels.Count > 0)
                 {
+                    LineSeries[] seriesRange = new LineSeries[model.Labels.Count];
+
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
                         ChartValues<ObservablePoint> points = new ChartValues<ObservablePoint>();
@@ -93,14 +98,16 @@ namespace NodeModelCharts.Controls
                             });
                         }
 
-                        XYLineChart.Series.Add(new LineSeries
+                        seriesRange[i] = new LineSeries
                         {
                             Title = model.Labels[i],
                             Values = points,
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
-                        });
+                        };
                     }
+
+                    XYLineChart.Series.AddRange(seriesRange);
                 }
             }
         }
@@ -114,7 +121,7 @@ namespace NodeModelCharts.Controls
                 // Invoke on UI thread
                 this.Dispatcher.Invoke(() =>
                 {
-                    XYLineChart.Series.Clear();
+                    LineSeries[] seriesRange = new LineSeries[model.Labels.Count];
 
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
@@ -129,14 +136,18 @@ namespace NodeModelCharts.Controls
                             });
                         }
 
-                        XYLineChart.Series.Add(new LineSeries
+                        seriesRange[i] = new LineSeries
                         {
                             Title = model.Labels[i],
                             Values = points,
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
-                        });
+                            //PointGeometrySize = 0
+                        };
                     }
+
+                    XYLineChart.Series.Clear();
+                    XYLineChart.Series.AddRange(seriesRange);
                 });
             }
         }

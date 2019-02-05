@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 using LiveCharts;
 using LiveCharts.Wpf;
@@ -42,26 +40,35 @@ namespace NodeModelCharts.Controls
         {
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
-                PieChart.Series.Add(new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
-                PieChart.Series.Add(new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
-                PieChart.Series.Add(new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel });
+                var seriesRange = new PieSeries[]
+                {
+                    new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel },
+                    new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel },
+                    new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel }
+                };
+
+                PieChart.Series.AddRange(seriesRange);
             }
 
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
                 if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
                 {
+                    var seriesRange = new PieSeries[model.Labels.Count];
+
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        PieChart.Series.Add(new PieSeries
+                        seriesRange[i] = new PieSeries
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double> { model.Values[i] },
                             Fill = model.Colors[i],
                             DataLabels = true,
                             LabelPoint = PointLabel
-                        });
+                        };
                     }
+
+                    PieChart.Series.AddRange(seriesRange);
                 }
             }
         }
@@ -75,11 +82,11 @@ namespace NodeModelCharts.Controls
                 // Invoke on UI thread
                 this.Dispatcher.Invoke(() =>
                 {
-                    PieChart.Series.Clear();
+                    var seriesRange = new PieSeries[nodeModel.Labels.Count];
 
                     for (var i = 0; i < nodeModel.Labels.Count; i++)
                     {
-                        PieChart.Series.Add(new PieSeries
+                        seriesRange[i] = new PieSeries
                         {
                             Title = nodeModel.Labels[i],
                             Fill = nodeModel.Colors[i],
@@ -87,8 +94,11 @@ namespace NodeModelCharts.Controls
                             Values = new ChartValues<double> { nodeModel.Values[i] },
                             DataLabels = true,
                             LabelPoint = PointLabel
-                        });
+                        };
                     }
+
+                    PieChart.Series.Clear();
+                    PieChart.Series.AddRange(seriesRange);
                 });
             }
         }

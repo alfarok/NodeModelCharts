@@ -39,25 +39,33 @@ namespace NodeModelCharts.Controls
             // Load sample data if any ports are not connected
             if (!model.InPorts[0].IsConnected && !model.InPorts[1].IsConnected && !model.InPorts[2].IsConnected)
             {
-                //SeriesCollection = new SeriesCollection()
-                BasicLineChart.Series.Add(new LineSeries { Title = "Series 1", Values = new ChartValues<double> { 4, 6, 5, 2, 4 } });
-                BasicLineChart.Series.Add(new LineSeries { Title = "Series 2", Values = new ChartValues<double> { 6, 7, 3, 4, 6 } });
-                BasicLineChart.Series.Add(new LineSeries { Title = "Series 3", Values = new ChartValues<double> { 4, 2, 7, 2, 7 } });
+                var seriesRange = new LineSeries[]
+                {
+                    new LineSeries { Title = "Series 1", Values = new ChartValues<double> { 4, 6, 5, 2, 4 } },
+                    new LineSeries { Title = "Series 2", Values = new ChartValues<double> { 6, 7, 3, 4, 6 } },
+                    new LineSeries { Title = "Series 3", Values = new ChartValues<double> { 4, 2, 7, 2, 7 } }
+                };
+
+                BasicLineChart.Series.AddRange(seriesRange);
             }
             else if (model.InPorts[0].IsConnected && model.InPorts[1].IsConnected && model.InPorts[2].IsConnected)
             {
                 if (model.Labels.Count == model.Values.Count && model.Labels.Count > 0)
                 {
+                    LineSeries[] seriesRange = new LineSeries[model.Labels.Count];
+
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        BasicLineChart.Series.Add(new LineSeries
+                        seriesRange[i] = new LineSeries
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double>(model.Values[i]),
                             Stroke = model.Colors[i],
                             Fill = Brushes.Transparent
-                        });
+                        };
                     }
+
+                    BasicLineChart.Series.AddRange(seriesRange);
                 }
             }
         }
@@ -71,18 +79,22 @@ namespace NodeModelCharts.Controls
                 // Invoke on UI thread
                 this.Dispatcher.Invoke(() =>
                 {
-                    BasicLineChart.Series.Clear();
+                    LineSeries[] seriesRange = new LineSeries[model.Labels.Count];
 
                     for (var i = 0; i < model.Labels.Count; i++)
                     {
-                        BasicLineChart.Series.Add(new LineSeries
+                        seriesRange[i] = new LineSeries
                         {
                             Title = model.Labels[i],
                             Values = new ChartValues<double>(model.Values[i]),
                             Stroke = model.Colors[i],
-                            Fill = Brushes.Transparent
-                        });
+                            Fill = Brushes.Transparent,
+                            //PointGeometrySize = 0
+                        };
                     }
+
+                    BasicLineChart.Series.Clear();
+                    BasicLineChart.Series.AddRange(seriesRange);
                 });
             }
         }
