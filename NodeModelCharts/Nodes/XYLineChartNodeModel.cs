@@ -82,7 +82,7 @@ namespace NodeModelCharts.Nodes
         private void XYLineChartNodeModel_PortDisconnected(PortModel port)
         {
             // Clear UI when a input port is disconnected
-            if (port.PortType == PortType.Input)
+            if (port.PortType == PortType.Input && this.State == ElementState.Active)
             {
                 Labels.Clear();
                 XValues.Clear();
