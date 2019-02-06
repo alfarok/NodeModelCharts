@@ -16,7 +16,7 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("Pie")]
+    [NodeName("Pie Chart")]
     [NodeCategory("NodeModelCharts.Charts")]
     [NodeDescription("Create a new Pie Chart.")]
     [InPortTypes("List<string>", "List<double>", "List<color>")]

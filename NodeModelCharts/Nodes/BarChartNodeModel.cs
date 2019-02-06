@@ -16,7 +16,7 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("Bar")]
+    [NodeName("Bar Chart")]
     [NodeCategory("NodeModelCharts.Charts")]
     [NodeDescription("Create a new Bar Chart.")]
     [InPortTypes("List<string>", "List<List<double>>", "List<color>")]
