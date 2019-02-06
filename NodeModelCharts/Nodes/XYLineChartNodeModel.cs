@@ -128,7 +128,7 @@ namespace NodeModelCharts.Nodes
             // Only continue if key/values match in length
             if (labels.Count != xValues.Count || xValues.Count != yValues.Count || labels.Count < 1)
             {
-                return; // TODO - throw exception for warning msg?
+                throw new Exception("Label and Values do not properly align in length.");
             }
 
             // Clear current chart values
