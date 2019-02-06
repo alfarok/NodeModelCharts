@@ -13,7 +13,7 @@ namespace NodeModelCharts.Controls
     /// </summary>
     public partial class PieChartControl : UserControl, INotifyPropertyChanged
     {
-        private Func<ChartPoint, string> PointLabel { get; set; }
+        //private Func<ChartPoint, string> PointLabel { get; set; }
         private Random rnd = new Random();
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,7 +29,7 @@ namespace NodeModelCharts.Controls
 
             model.PropertyChanged += NodeModel_PropertyChanged;
 
-            PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            //PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
             BuildUI(model);
 
@@ -42,9 +42,9 @@ namespace NodeModelCharts.Controls
             {
                 var seriesRange = new PieSeries[]
                 {
-                    new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel },
-                    new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel },
-                    new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true, LabelPoint = PointLabel }
+                    new PieSeries { Title = "Item1", Values = new ChartValues<double> { 100.0 }, DataLabels = true/*, LabelPoint = PointLabel*/ },
+                    new PieSeries { Title = "Item2", Values = new ChartValues<double> { 100.0 }, DataLabels = true/*, LabelPoint = PointLabel*/ },
+                    new PieSeries { Title = "Item3", Values = new ChartValues<double> { 100.0 }, DataLabels = true/*, LabelPoint = PointLabel*/ }
                 };
 
                 PieChart.Series.AddRange(seriesRange);
@@ -64,7 +64,7 @@ namespace NodeModelCharts.Controls
                             Values = new ChartValues<double> { model.Values[i] },
                             Fill = model.Colors[i],
                             DataLabels = true,
-                            LabelPoint = PointLabel
+                            //LabelPoint = PointLabel
                         };
                     }
 
@@ -93,7 +93,7 @@ namespace NodeModelCharts.Controls
                             //StrokeThickness = 0,
                             Values = new ChartValues<double> { nodeModel.Values[i] },
                             DataLabels = true,
-                            LabelPoint = PointLabel
+                            //LabelPoint = PointLabel
                         };
                     }
 
@@ -103,6 +103,7 @@ namespace NodeModelCharts.Controls
             }
         }
 
+        /*
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
         {
             var chart = (PieChart)chartpoint.ChartView;
@@ -116,6 +117,7 @@ namespace NodeModelCharts.Controls
             var selectedSeries = (PieSeries)chartpoint.SeriesView;
             selectedSeries.PushOut = 8;
         }
+        */
 
         private void ThumbResizeThumbOnDragDeltaHandler(object sender, DragDeltaEventArgs e)
         {
