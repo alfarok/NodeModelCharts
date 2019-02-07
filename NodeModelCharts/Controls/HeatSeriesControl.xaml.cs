@@ -108,8 +108,8 @@ namespace NodeModelCharts.Controls
                         DrawsHeatRange = false,
                         GradientStopCollection = colors,
                         Fill = hoverIconColor,
-                        PointGeometry = DefaultGeometries.Square,
-                        DataLabels = true
+                        PointGeometry = DefaultGeometries.Square
+                        //DataLabels = true
                     });
                 }
             }
@@ -146,8 +146,8 @@ namespace NodeModelCharts.Controls
                         DrawsHeatRange = false,
                         GradientStopCollection = colors,
                         Fill = hoverIconColor,
-                        PointGeometry = DefaultGeometries.Square,
-                        DataLabels = true
+                        PointGeometry = DefaultGeometries.Square
+                        //DataLabels = true
                     });
                 });
             }
