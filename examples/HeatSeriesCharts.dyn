@@ -1,0 +1,266 @@
+{
+  "Uuid": "abaa373a-3868-4c0a-90f0-2d01f850c52a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "HeatSeriesCharts",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Color": {
+        "Key": "DSCore.Color",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\n\t\"User-1\",\n\t\"User-2\",\n\t\"User-3\",\n\t\"User-4\",\n\t\"User-5\"\n];\n\n[\n\t\"Option-1\",\n\t\"Option-2\",\n\t\"Option-3\"\n];\n\n[\n\t[0, 1, 2],\n\t[3, 4, 5],\n\t[6, 7, 8],\n\t[9, 10, 11],\n\t[12, 13, 14]\n];\n[];",
+      "Id": "bd1ca19bdab9432bb30e645c46c09c7d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "78c3849777ef40189efadaadb14a1915",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1e76ef482ea547b08527dfb5e21abd07",
+          "Name": "",
+          "Description": "Value of expression at line 9",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6258fa3f85ac4c1aa96f6823dd16035c",
+          "Name": "",
+          "Description": "Value of expression at line 15",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f13fd747e7fd42d1afe4a41e47798917",
+          "Name": "",
+          "Description": "Value of expression at line 22",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
+      "XLabels": [
+        "User-1",
+        "User-2",
+        "User-3",
+        "User-4",
+        "User-5"
+      ],
+      "YLabels": [
+        "Option-1",
+        "Option-2",
+        "Option-3"
+      ],
+      "Values": [
+        [
+          0.0,
+          1.0,
+          2.0
+        ],
+        [
+          3.0,
+          4.0,
+          5.0
+        ],
+        [
+          6.0,
+          7.0,
+          8.0
+        ],
+        [
+          9.0,
+          10.0,
+          11.0
+        ],
+        [
+          12.0,
+          13.0,
+          14.0
+        ]
+      ],
+      "Colors": [
+        "#FFFF0000",
+        "#FF0000FF"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "caaa7d3be8dc4bc3bb2b2e33c9eb957e",
+      "Inputs": [
+        {
+          "Id": "d5a126856f7242a0b621873ad7d3821c",
+          "Name": "x-labels",
+          "Description": "A list of string labels for the x-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7cdae34a516c45c687b3b4ae026fbf94",
+          "Name": "y-labels",
+          "Description": "A list of string labels for the y-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "786c3e30bb0e4c559864161ee6f7f724",
+          "Name": "values",
+          "Description": "A list of lists each containing double values representing items in a column.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "13ba8ffb397f4501a5735329ee70b74b",
+          "Name": "colors",
+          "Description": "A list of colors used to generate a color range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "70340032e72c40b78e42eac96cc25fa5",
+          "Name": "inputs",
+          "Description": "An object array containing all input values.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new heat series plot."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\n\tColor.ByARGB(255, 255, 0, 0),\n\tColor.ByARGB(255, 0, 0, 255)\n];",
+      "Id": "9f2fb3348cdd4c0ea1df5c8846967fb8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1a6eb41be2744fcaba01fb37961f720c",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "78c3849777ef40189efadaadb14a1915",
+      "End": "d5a126856f7242a0b621873ad7d3821c",
+      "Id": "c9317b4d47674ccfaf5fd7be61f68f49"
+    },
+    {
+      "Start": "1e76ef482ea547b08527dfb5e21abd07",
+      "End": "7cdae34a516c45c687b3b4ae026fbf94",
+      "Id": "95f68cfbe3414422b7f1e3638f782ffa"
+    },
+    {
+      "Start": "6258fa3f85ac4c1aa96f6823dd16035c",
+      "End": "786c3e30bb0e4c559864161ee6f7f724",
+      "Id": "5d9a7d4e0b004abbb3a0bd602240df59"
+    },
+    {
+      "Start": "1a6eb41be2744fcaba01fb37961f720c",
+      "End": "13ba8ffb397f4501a5735329ee70b74b",
+      "Id": "bf76c1fd586840569400075c9c3146f9"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3994",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "bd1ca19bdab9432bb30e645c46c09c7d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 265.14820972626774,
+        "Y": 16.070600862902637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Heat Series Plot",
+        "Id": "caaa7d3be8dc4bc3bb2b2e33c9eb957e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 550.45930903304111,
+        "Y": 160.25121816302004
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9f2fb3348cdd4c0ea1df5c8846967fb8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 128.00140067391339,
+        "Y": 462.92692063431622
+      }
+    ],
+    "Annotations": [],
+    "X": 339.17665373855783,
+    "Y": 13.588037135235965,
+    "Zoom": 0.82349548680452456
+  }
+}

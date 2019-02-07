@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BarChartFunctions.cs" />
     <Compile Include="ScatterPlotFunctions.cs" />
+    <Compile Include="HeatSeriesFunctions.cs" />
     <Compile Include="XYLineChartFunctions.cs" />
     <Compile Include="BasicLineChartFunctions.cs" />
     <Compile Include="PieChartFunctions.cs" />

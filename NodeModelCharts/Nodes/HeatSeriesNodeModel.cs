@@ -16,50 +16,50 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("XY Line Plot")]
+    [NodeName("Heat Series Plot")]
     [NodeCategory("NodeModelCharts.Charts")]
-    [NodeDescription("Create a new XY line plot.")]
-    [InPortTypes("List<string>", "List<List<double>>", "List<List<double>>", "List<color>")]
-    [OutPortTypes("Dictionary<string, double>")]
+    [NodeDescription("Create a new heat series plot.")]
+    [InPortTypes("List<string>", "List<string>", "List<List<double>>", "List<List<double>>", "List<color>")]
+    [OutPortTypes("object[]")]
     [IsDesignScriptCompatible]
-    public class XYLineChartNodeModel : NodeModel
+    public class HeatSeriesNodeModel : NodeModel
     {
         #region Properties
         private Random rnd = new Random();
 
         /// <summary>
-        /// A list of Labels for each line to be plotted.
+        /// A list of X-axis Labels.
         /// </summary>
-        public List<string> Labels { get; set; }
+        public List<string> XLabels { get; set; }
 
         /// <summary>
-        /// List of lists each containing double values representing x-coordinates.
+        /// A list of Y-axis Labels.
         /// </summary>
-        public List<List<double>> XValues { get; set; }
+        public List<string> YLabels { get; set; }
 
         /// <summary>
-        /// List of lists each containing double values representing y-coordinates.
+        /// List of lists each containing double values representing items in a column.
         /// </summary>
-        public List<List<double>> YValues { get; set; }
+        public List<List<double>> Values { get; set; }
 
         /// <summary>
         /// A list of color values, one for each plotted line.
         /// </summary>
-        public List<SolidColorBrush> Colors { get; set; }
+        public List<Color> Colors { get; set; }
         #endregion
 
         #region Constructors
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public XYLineChartNodeModel()
+        public HeatSeriesNodeModel()
         {
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("labels", "A list of string labels for each line to be plotted")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("x-values", "List of lists each containing double values representing x-coordinates")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("y-values", "List of lists each containing double values representing y-coordinates")));
-            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "XY line chart line color values")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("x-labels", "A list of string labels for the x-axis.")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("y-labels", "A list of string labels for the y-axis.")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "A list of lists each containing double values representing items in a column.")));
+            InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "A list of colors used to generate a color range")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing title:value key-pairs")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("inputs", "An object array containing all input values.")));
 
             RegisterAllPorts();
 
@@ -72,7 +72,7 @@ namespace NodeModelCharts.Nodes
         /// <summary>
         /// Instantiate a new NodeModel instance.
         /// </summary>
-        public XYLineChartNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
+        public HeatSeriesNodeModel(IEnumerable<PortModel> inPorts, IEnumerable<PortModel> outPorts) : base(inPorts, outPorts)
         {
             PortDisconnected += XYLineChartNodeModel_PortDisconnected;
         }
@@ -84,9 +84,9 @@ namespace NodeModelCharts.Nodes
             // Clear UI when a input port is disconnected
             if (port.PortType == PortType.Input && this.State == ElementState.Active)
             {
-                Labels.Clear();
-                XValues.Clear();
-                YValues.Clear();
+                XLabels.Clear();
+                YLabels.Clear();
+                Values.Clear();
                 Colors.Clear();
 
                 RaisePropertyChanged("DataUpdated");
@@ -120,79 +120,69 @@ namespace NodeModelCharts.Nodes
             var inputs = data as ArrayList;
 
             // Each of the list inputs are also returned as ArrayLists
-            var labels = inputs[0] as ArrayList;
-            var xValues = inputs[1] as ArrayList;
-            var yValues = inputs[2] as ArrayList;
+            var xLabels = inputs[0] as ArrayList;
+            var yLabels = inputs[1] as ArrayList;
+            var values = inputs[2] as ArrayList;
             var colors = inputs[3] as ArrayList;
 
-            // Only continue if key/values match in length
-            if (labels.Count != xValues.Count || xValues.Count != yValues.Count || labels.Count < 1)
+            // TODO - is it worth/possible to display jagged data
+            // If data is jagged throw warning
+            if (xLabels.Count != values.Count || xLabels.Count == 0)
             {
                 throw new Exception("Label and Values do not properly align in length.");
             }
 
             // Clear current chart values
-            Labels = new List<string>();
-            XValues = new List<List<double>>();
-            YValues = new List<List<double>>();
-            Colors = new List<SolidColorBrush>();
+            XLabels = new List<string>();
+            YLabels = new List<string>();
+            Values = new List<List<double>>();
+            Colors = new List<Color>();
 
-            // If color count doesn't match title count use random colors
-            if (colors.Count != labels.Count)
+            // Iterate the x and y values separately as they may be different lengths
+            for (var i = 0; i < xLabels.Count; i++)
             {
-                for (var i = 0; i < labels.Count; i++)
-                {
-                    var outputXValues = new List<double>();
-                    var outputYValues = new List<double>();
-
-                    var unpackedXValues = xValues[i] as ArrayList;
-                    var unpackedYValues = yValues[i] as ArrayList;
-
-                    for (var j = 0; j < unpackedXValues.Count; j++)
-                    {
-                        outputXValues.Add(Convert.ToDouble(unpackedXValues[j]));
-                        outputYValues.Add(Convert.ToDouble(unpackedYValues[j]));
-                    }
-
-                    Labels.Add((string)labels[i]);
-                    XValues.Add(outputXValues);
-                    YValues.Add(outputYValues);
-
-                    Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
-                    SolidColorBrush brush = new SolidColorBrush(randomColor);
-                    brush.Freeze();
-                    Colors.Add(brush);
-                }
+                XLabels.Add((string)xLabels[i]);
             }
-            // Else all inputs should be consistent in length
+
+            for (var i = 0; i < yLabels.Count; i++)
+            {
+                YLabels.Add((string)yLabels[i]);
+            }
+
+            // Iterate values (count should be x-labels length * y-lables length)
+            for (var i = 0; i < values.Count; i++)
+            {
+                var unpackedValues = values[i] as ArrayList;
+                var outputValues = new List<double>();
+
+                for(int j = 0; j < unpackedValues.Count; j++)
+                {
+                    outputValues.Add(Convert.ToDouble(unpackedValues[j]));
+                }
+
+                Values.Add(outputValues);
+            }
+
+            // If colors is empty add 1 random color
+            if (colors == null || colors.Count == 0)
+            {
+                Color randomColor = Color.FromArgb(255, (byte)rnd.Next(256), (byte)rnd.Next(256), (byte)rnd.Next(256));
+                Colors.Add(randomColor);
+            }
+
+            // If provided with 1 color blend white to color
+            // Else create color range from provided color
             else
             {
-                for (var i = 0; i < labels.Count; i++)
+                for(var i = 0; i < colors.Count; i++)
                 {
-                    var outputXValues = new List<double>();
-                    var outputYValues = new List<double>();
-
-                    var unpackedXValues = xValues[i] as ArrayList;
-                    var unpackedYValues = yValues[i] as ArrayList;
-
-                    for (var j = 0; j < unpackedXValues.Count; j++)
-                    {
-                        outputXValues.Add(Convert.ToDouble(unpackedXValues[j]));
-                        outputYValues.Add(Convert.ToDouble(unpackedYValues[j]));
-                    }
-
-                    Labels.Add((string)labels[i]);
-                    XValues.Add(outputXValues);
-                    YValues.Add(outputYValues);
-
                     var dynColor = (DSCore.Color)colors[i];
                     var convertedColor = Color.FromArgb(dynColor.Alpha, dynColor.Red, dynColor.Green, dynColor.Blue);
-                    SolidColorBrush brush = new SolidColorBrush(convertedColor);
-                    brush.Freeze();
-                    Colors.Add(brush);
+                    Colors.Add(convertedColor);
                 }
             }
 
+            // TODO - Should this use Dynamo Scheduler to prevent timing issues with redundant calls?
             // Notify UI the data has been modified
             RaisePropertyChanged("DataUpdated");
         }
@@ -225,7 +215,7 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<List<double>>, List<List<double>>, List<DSCore.Color>, Dictionary<string, Dictionary<string, List<double>>>>(XYLineChartFunctions.GetNodeInput),
+                new Func<List<string>, List<string>, List<List<double>>, List<DSCore.Color>, object[]>(HeatSeriesFunctions.GetNodeInput),
                 new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
             );
 
@@ -245,9 +235,9 @@ namespace NodeModelCharts.Nodes
     /// <summary>
     ///     View customizer for CustomNodeModel Node Model.
     /// </summary>
-    public class XYLineChartNodeView : INodeViewCustomization<XYLineChartNodeModel>
+    public class HeatSeriesNodeView : INodeViewCustomization<HeatSeriesNodeModel>
     {
-        private XYLineChartControl xyLineChartControl;
+        private HeatSeriesControl heatSeriesControl;
 
         /// <summary>
         /// At run-time, this method is called during the node 
@@ -255,10 +245,10 @@ namespace NodeModelCharts.Nodes
         /// </summary>
         /// <param name="model">The NodeModel representing the node's core logic.</param>
         /// <param name="nodeView">The NodeView representing the node in the graph.</param>
-        public void CustomizeView(XYLineChartNodeModel model, NodeView nodeView)
+        public void CustomizeView(HeatSeriesNodeModel model, NodeView nodeView)
         {
-            xyLineChartControl = new XYLineChartControl(model);
-            nodeView.inputGrid.Children.Add(xyLineChartControl);
+            heatSeriesControl = new HeatSeriesControl(model);
+            nodeView.inputGrid.Children.Add(heatSeriesControl);
 
             MenuItem exportImage = new MenuItem();
             exportImage.Header = "Export Chart as Image";
@@ -270,7 +260,7 @@ namespace NodeModelCharts.Nodes
 
         private void ExportImage_Click(object sender, RoutedEventArgs e)
         {
-            Export.ToPng(xyLineChartControl);
+            Export.ToPng(heatSeriesControl);
         }
 
         /// <summary>

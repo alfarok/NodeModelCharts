@@ -16,7 +16,7 @@ using ChartHelpers;
 
 namespace NodeModelCharts.Nodes
 {
-    [NodeName("Basic Line")]
+    [NodeName("Index-Value Line Plot")]
     [NodeCategory("NodeModelCharts.Charts")]
     [NodeDescription("Create a new Basic Line Chart.")]
     [InPortTypes("List<string>", "List<List<double>>", "List<color>")]
