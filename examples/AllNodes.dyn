@@ -1,0 +1,434 @@
+{
+  "Uuid": "3bcd4064-e94c-43d0-81a3-f195dfaa38b4",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AllNodes",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BarChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "7c94d578aa8f4faabb1e30a0026095c2",
+      "Inputs": [
+        {
+          "Id": "c4d748f99d6044f3a144e94adca262bf",
+          "Name": "labels",
+          "Description": "a list of bar chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "51b5538e03a74f3c8a6b628e2fab1c71",
+          "Name": "values",
+          "Description": "a list of lists containing values for each bar in a given category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "750e075994024aa7b95fdbdde7fdc9a3",
+          "Name": "colors",
+          "Description": "a list of colors for each unique bar in a category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a8fc8dcc6e644099a61592d5dfae739f",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Bar Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
+      "XLabels": null,
+      "YLabels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "b01061f8630a46938815036f3425ed81",
+      "Inputs": [
+        {
+          "Id": "aa527db8cd97434e8990da50e52f7e11",
+          "Name": "x-labels",
+          "Description": "A list of string labels for the x-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e0600a47170d4e16bc70875e4384678d",
+          "Name": "y-labels",
+          "Description": "A list of string labels for the y-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be424acd1d5047068d4cdb735a444af6",
+          "Name": "values",
+          "Description": "A list of lists each containing double values representing items in a column.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "379f6cdeea764774ad1b682aaf4d8156",
+          "Name": "colors",
+          "Description": "A list of colors used to generate a color range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3307e7175f824d7a87337a8dc06dd61a",
+          "Name": "inputs",
+          "Description": "An object array containing all input values.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new heat series plot."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.BasicLineChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "d2b23668223a41418779e4bccc123711",
+      "Inputs": [
+        {
+          "Id": "ab740e19f1794c3a893ee42887b7ee0e",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "167b4c2287174b1cb1f83909d691815d",
+          "Name": "values",
+          "Description": "List of lists each containing double values to be plotted against X-Axis values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "829ba5ab868549c493d7de6c3c4709c7",
+          "Name": "colors",
+          "Description": "basic line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "768f2044dfb149b983ed19f7ecb560f7",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Basic Line Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.PieChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "223b09f9ac424e21b632ead5ef6e202d",
+      "Inputs": [
+        {
+          "Id": "bccbabc78ae54000b8a95b96092d2d63",
+          "Name": "labels",
+          "Description": "pie chart category labels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "066f3ad2288f47d18ae0c3ed16005db1",
+          "Name": "values",
+          "Description": "pie chart values to be compared",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2cc7815dedea4415b276b63de5371540",
+          "Name": "colors",
+          "Description": "pie chart color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d64e45c689e64022b4792180629eb880",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new Pie Chart."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.ScatterPlotNodeModel, NodeModelCharts",
+      "Labels": null,
+      "XValues": null,
+      "YValues": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "13a0b203214b42869ff319e43829050f",
+      "Inputs": [
+        {
+          "Id": "cadcb6fa76464cc99b214887e5f39fac",
+          "Name": "labels",
+          "Description": "A list of string labels for each group of points to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6dcb975b6d304789b8400a6123dbc2a7",
+          "Name": "x-values",
+          "Description": "A list of lists each containing double values representing x-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7fc1bbfbfb724cb5a42b10515cfd0962",
+          "Name": "y-values",
+          "Description": "A list of lists each containing double values representing y-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4640ee9c7a3d476ea8ea984dcc572df0",
+          "Name": "colors",
+          "Description": "A list of color values for each group of points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a9dd5ed1045746478b1ed5b06a4708a7",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new scatter plot."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.XYLineChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "XValues": null,
+      "YValues": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "4072908128884e189e918f8be605803a",
+      "Inputs": [
+        {
+          "Id": "701fb69c3ccc4f00afb3e2e921c73326",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3287fc5732044fc9593cb610fdaecf9",
+          "Name": "x-values",
+          "Description": "List of lists each containing double values representing x-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fdc4a40126ee4a4e9765a179724cae92",
+          "Name": "y-values",
+          "Description": "List of lists each containing double values representing y-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6ba790bbd1a34a5ca5dd3bd2ba0541c9",
+          "Name": "colors",
+          "Description": "XY line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2d48541e099d4bf0b98197ba7f1fcef5",
+          "Name": "labels:values",
+          "Description": "Dictionary containing title:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new XY line plot."
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.2.0.3994",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 0.4233388544044776,
+      "EyeY": 48.180883040903808,
+      "EyeZ": 59.171853685853179,
+      "LookX": -3.9790109325785523,
+      "LookY": 9.61184245712881,
+      "LookZ": -59.7392664549689,
+      "UpX": 0.024357317571114662,
+      "UpY": 0.93041756798202657,
+      "UpZ": 0.3656909491239223
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Bar Chart",
+        "Id": "7c94d578aa8f4faabb1e30a0026095c2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 668.11488462603347,
+        "Y": 412.17206522196818
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Heat Series Plot",
+        "Id": "b01061f8630a46938815036f3425ed81",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 666.85651320561874,
+        "Y": 37.168135853556407
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Index-Value Line Plot",
+        "Id": "d2b23668223a41418779e4bccc123711",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 198.2932534942646,
+        "Y": 37.168135853556407
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Pie Chart",
+        "Id": "223b09f9ac424e21b632ead5ef6e202d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 199.55162491467934,
+        "Y": 412.17206522196818
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Scatter Plot",
+        "Id": "13a0b203214b42869ff319e43829050f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1130.8139158776598,
+        "Y": 37.168135853556407
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "XY Line Plot",
+        "Id": "4072908128884e189e918f8be605803a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1132.0722872980746,
+        "Y": 412.17206522196818
+      }
+    ],
+    "Annotations": [],
+    "X": -70.985844550838209,
+    "Y": -2.9428225663675178,
+    "Zoom": 0.88631893448095567
+  }
+}
