@@ -13,19 +13,20 @@ namespace ChartHelpers
         private HeatSeriesFunctions() { }
 
         [IsVisibleInDynamoLibrary(false)]
-        public static object[] GetNodeInput(List<string> xLabels, List<string> yLabels, List<List<double>> values, List<DSCore.Color> colors)
+        public static Dictionary<string, List<double>> GetNodeInput(List<string> xLabels, List<string> yLabels, List<List<double>> values, List<DSCore.Color> colors)
         {
             // TODO - just pass input data unmodified instead?
-            if (xLabels.Count * yLabels.Count != values.Count)
+            if (xLabels.Count != values.Count && xLabels.Count > 0)
             {
                 return null;
             }
 
-            var output = new object[4];
-            output[0] = xLabels;
-            output[1] = yLabels;
-            output[2] = values;
-            output[3] = colors;
+            var output = new Dictionary<string, List<double>>();
+
+            for(var i = 0; i < xLabels.Count; i++)
+            {
+                output.Add(xLabels[i], values[i]);
+            }
 
             return output;
         }

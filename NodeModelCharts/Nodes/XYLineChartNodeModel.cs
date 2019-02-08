@@ -59,7 +59,7 @@ namespace NodeModelCharts.Nodes
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("y-values", "List of lists each containing double values representing y-coordinates")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "XY line chart line color values")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing title:value key-pairs")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
 
             RegisterAllPorts();
 

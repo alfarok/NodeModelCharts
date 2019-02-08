@@ -53,7 +53,7 @@ namespace NodeModelCharts.Nodes
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "List of lists each containing double values to be plotted against X-Axis values")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "basic line chart line color values")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing title:value key-pairs")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
 
             RegisterAllPorts();
 

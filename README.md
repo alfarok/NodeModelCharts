@@ -18,14 +18,14 @@ A collection of custom UI graphing utility nodes for [Dynamo](https://github.com
 NodeModelCharts is built against Dynamo 2.02+
 
 ## Installing
-The easiest way to use NodeModelCharts is to download the prebuilt package on the Dynamo package manager.  If you would like to build from source you can additionally modify and uncomment [these lines](https://github.com/alfarok/NodeModelCharts/blob/master/NodeModelCharts/NodeModelCharts.csproj#L211) to automatically copy each Visual Studio build into your local Core packages folder.  One last option is to grab a prebuilt version of the package from the GitHub releases and place this folder in your packages destination.
+The easiest way to use NodeModelCharts is to download the prebuilt package on the Dynamo package manager.  If you would like to build from source you can additionally modify and uncomment [these lines](https://github.com/alfarok/NodeModelCharts/blob/master/NodeModelCharts/NodeModelCharts.csproj#L211) to automatically copy each Visual Studio build into your local Core packages folder.  One last option is to grab a prebuilt version of the package from the GitHub releases and place this folder in your packages destination (coming soon).
 
 ## Exporting Images
-All `NodeModelChart` nodes have additional options in their context menu (right-click on node), one of which is `Export Chart as Image`.  This option will export a Png image of the chart in the current size and state (excluding the `NodeView`).  For higher quality images, simply resize the node by dragging the box in the lower right-hand corner and export again.
+All `NodeModelChart` nodes have additional options in their context menu (right-click on node), one of which is `Export Chart as Image`.  This option will export a Png image of the chart at the current aspect ratio and state (excluding the `NodeView`).  For higher quality images, simply resize the node by dragging the box in the lower right-hand corner and export again.
 
 ## Performance Tricks & Customization
 
-The goal in creating this initial library was to keep the nodes as simple as possible for the average Dynamo user.  Creating nodes with large amounts of input parameters often lead to greater confusion and lower adoption.  Luckily, this is an open source project that wraps another open source graphing library so developers have the ability to expose and customize as much or as little as desired.
+The goal in creating this initial library was to keep the nodes as simple as possible for the average Dynamo user.  Creating nodes with a large number of input parameters often leads to greater confusion and lower adoption rates.  Luckily, this is an open source project that wraps another open source graphing library so developers have the ability to expose and customize as much or as little as desired to fit their needs.
 
 If you need to plot large amounts of data (thousands of points) you will begin to see a degradation of performance.  There are several simple things that can be done to greatly increase performance capabilities.  In the future some of these options can be added to the context menu to allow for simply toggling.  All of these features were left enabled to show developers the capabilities of the library.
 
@@ -35,8 +35,8 @@ If you need to plot large amounts of data (thousands of points) you will begin t
 - Keep the number of visual elements, sections and axes lower than 25
 - When possible, disable hovering, use a null tooltip and remove any `DataClick` event from your chart
 - When you are sure your strokes, fills or `PointGeometries` are not going to change then freeze them
-- Avoid calling `.Add()` multiple times on a `Series` (use `.AddRange()` method to add a collection)
-- Use the [Geared package](https://lvcharts.net/licensing/pricing) add-on (The geared package is a set of light weight series that connects with this library, it allows your charts to have million of points, and keep your UI responsive.)
+- Avoid calling `.Add()` multiple times on a `Series`, instead use `.AddRange()` method to add a collection
+- Use the [Geared package](https://lvcharts.net/licensing/pricing) add-on (The geared package is a set of light weight series that connects with this library, it allows your charts to have **millions of points**, and keep your UI responsive)
 
 ## Contributions
 

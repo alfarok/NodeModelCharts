@@ -59,7 +59,7 @@ namespace NodeModelCharts.Nodes
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("values", "A list of lists each containing double values representing items in a column.")));
             InPorts.Add(new PortModel(PortType.Input, this, new PortData("colors", "A list of colors used to generate a color range")));
 
-            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("inputs", "An object array containing all input values.")));
+            OutPorts.Add(new PortModel(PortType.Output, this, new PortData("labels:values", "Dictionary containing label:value key-pairs")));
 
             RegisterAllPorts();
 
@@ -215,7 +215,7 @@ namespace NodeModelCharts.Nodes
             }
 
             AssociativeNode inputNode = AstFactory.BuildFunctionCall(
-                new Func<List<string>, List<string>, List<List<double>>, List<DSCore.Color>, object[]>(HeatSeriesFunctions.GetNodeInput),
+                new Func<List<string>, List<string>, List<List<double>>, List<DSCore.Color>, Dictionary<string, List<double>>>(HeatSeriesFunctions.GetNodeInput),
                 new List<AssociativeNode> { inputAstNodes[0], inputAstNodes[1], inputAstNodes[2], inputAstNodes[3] }
             );
 
