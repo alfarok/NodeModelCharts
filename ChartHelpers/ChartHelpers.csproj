@@ -31,23 +31,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Analysis, Version=2.1.0.7465, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.1.0.7465\lib\net47\Analysis.dll</HintPath>
+    <Reference Include="Analysis, Version=2.0.2.6986, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.0.2.6986\lib\net45\Analysis.dll</HintPath>
     </Reference>
-    <Reference Include="DSCoreNodes, Version=2.1.0.7465, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.1.0.7465\lib\net47\DSCoreNodes.dll</HintPath>
+    <Reference Include="DSCoreNodes, Version=2.0.2.6986, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.0.2.6986\lib\net45\DSCoreNodes.dll</HintPath>
     </Reference>
-    <Reference Include="DynamoServices, Version=2.1.0.7465, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.DynamoServices.2.1.0.7465\lib\net47\DynamoServices.dll</HintPath>
+    <Reference Include="DynamoServices, Version=2.0.2.6986, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.DynamoServices.2.0.2.6986\lib\net45\DynamoServices.dll</HintPath>
     </Reference>
-    <Reference Include="DynamoUnits, Version=2.1.0.7465, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.1.0.7465\lib\net47\DynamoUnits.dll</HintPath>
+    <Reference Include="DynamoUnits, Version=2.0.2.6986, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.0.2.6986\lib\net45\DynamoUnits.dll</HintPath>
     </Reference>
-    <Reference Include="GeometryColor, Version=2.1.0.7465, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.1.0.7465\lib\net47\GeometryColor.dll</HintPath>
+    <Reference Include="GeometryColor, Version=2.0.2.6986, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.DynamoCoreNodes.2.0.2.6986\lib\net45\GeometryColor.dll</HintPath>
     </Reference>
-    <Reference Include="ProtoGeometry, Version=2.1.0.23964, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.1.0.7465\lib\net47\ProtoGeometry.dll</HintPath>
+    <Reference Include="ProtoGeometry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.0.2.6986\lib\net45\ProtoGeometry.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

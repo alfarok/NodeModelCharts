@@ -19,211 +19,6 @@
   "Outputs": [],
   "Nodes": [
     {
-      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
-      "XLabels": [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
-      ],
-      "YLabels": [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
-      ],
-      "Values": [
-        [
-          0.18373527945193241,
-          0.292885979308228,
-          0.9617626103394491,
-          0.21531125680325144,
-          0.08181232590312712,
-          0.38519470597859223,
-          0.61358488472811179,
-          0.77440227743908874,
-          0.93874725836270823,
-          0.49930253741298919
-        ],
-        [
-          0.72689888986148821,
-          0.52298579016839419,
-          0.13942255784730545,
-          0.86510210803947507,
-          0.2824889250483778,
-          0.988424938166712,
-          0.75147638225531033,
-          0.4705098548301076,
-          0.67540818717116868,
-          0.6499578625196395
-        ],
-        [
-          0.73932305944120658,
-          0.20373118957678377,
-          0.29579584919651775,
-          0.13632698270321217,
-          0.4367796859875227,
-          0.81627916582686788,
-          0.2478048676847503,
-          0.023126617084781927,
-          0.80620354218697343,
-          0.12515399797128235
-        ],
-        [
-          0.034321340748258558,
-          0.11435128846874056,
-          0.0023704189818214714,
-          0.29497300055575232,
-          0.37376155675098371,
-          0.49577290261898793,
-          0.99820625875061675,
-          0.96308694964418506,
-          0.59705750532311275,
-          0.5931543813055169
-        ],
-        [
-          0.814244477923142,
-          0.5961294977907694,
-          0.13639206259343403,
-          0.70535567016590184,
-          0.4078678756057601,
-          0.94993281967469156,
-          0.8242262684852939,
-          0.19883265634944319,
-          0.25388084876066114,
-          0.017521234237366
-        ],
-        [
-          0.525123168958874,
-          0.550552199385386,
-          0.76099154016049186,
-          0.028530599562698322,
-          0.88484658295514373,
-          0.98000408987514864,
-          0.99709013011171022,
-          0.8254356276362369,
-          0.77853157081572877,
-          0.26553316007625927
-        ],
-        [
-          0.13738983829384196,
-          0.59045826764332976,
-          0.96819873525211531,
-          0.81359326039142588,
-          0.46498119666473064,
-          0.61254760139274766,
-          0.52061537118657275,
-          0.84444955729155313,
-          0.49134055128849136,
-          0.78671602242938987
-        ],
-        [
-          0.9902186794160952,
-          0.78838943261112526,
-          0.87345234950699491,
-          0.082253805865651841,
-          0.83571338459649747,
-          0.14319356165043709,
-          0.067339126983349734,
-          0.590440179030616,
-          0.7284591070974521,
-          0.48684686631283114
-        ],
-        [
-          0.992052897341574,
-          0.048972211335307082,
-          0.76924576832412084,
-          0.78868230794960736,
-          0.60003082901240834,
-          0.48376914136287252,
-          0.35335974830824868,
-          0.97383981941912312,
-          0.41012641760060864,
-          0.39375746687583507
-        ],
-        [
-          0.49868277250727766,
-          0.17277063111437979,
-          0.18455537882845632,
-          0.33152434524685348,
-          0.45576454301167491,
-          0.22378621027981221,
-          0.62793076253865421,
-          0.32279880220200813,
-          0.24037447350117119,
-          0.79532027421301243
-        ]
-      ],
-      "Colors": [
-        "#FF72E031"
-      ],
-      "NodeType": "ExtensionNode",
-      "Id": "06a33720610b4957ab883a9dec096422",
-      "Inputs": [
-        {
-          "Id": "c220d5189a3442228e241f3eb1cc7dc2",
-          "Name": "x-labels",
-          "Description": "A list of string labels for the x-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1eceda4937ff4a8794d9a93ac23bb239",
-          "Name": "y-labels",
-          "Description": "A list of string labels for the y-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "73b49d629e1542cdaaa81741b2450b9a",
-          "Name": "values",
-          "Description": "A list of lists each containing double values representing items in a column.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "d8a289d59af641ad927f3a2a2ce6e011",
-          "Name": "colors",
-          "Description": "A list of colors used to generate a color range",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "039d62fe23444a1daa6e9acadab67637",
-          "Name": "inputs",
-          "Description": "An object array containing all input values.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Create a new heat series plot."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
       "Code": "0..9..1;",
@@ -279,7 +74,7 @@
       "Id": "c32fe1ef9d044eb898f8e32f00d0b122",
       "Inputs": [
         {
-          "Id": "b2a63c5887cc4cefb5392f6e9bbb44e7",
+          "Id": "e38a86b8d13545c09960d2ba7f6d187e",
           "Name": "c",
           "Description": "c",
           "UsingDefaultValue": false,
@@ -290,7 +85,7 @@
       ],
       "Outputs": [
         {
-          "Id": "842537f6b3874301b6ddf4b8f6f06495",
+          "Id": "cb9ca4c6a1f74970baa2c18e02f84a3d",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -299,7 +94,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "b7899613d07343ed8ec91eb0aa0519a4",
+          "Id": "88a8195d359e425fb7d27f92e8ffd56e",
           "Name": "",
           "Description": "Value of expression at line 14",
           "UsingDefaultValue": false,
@@ -390,6 +185,271 @@
     },
     {
       "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
+      "XLabels": null,
+      "YLabels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "191a002c0c754d05b4ffe29c19a63e26",
+      "Inputs": [
+        {
+          "Id": "39bdcc0209644345971c0b4833276f42",
+          "Name": "x-labels",
+          "Description": "A list of string labels for the x-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cbd66cb685b64ebf9040aae6f8e7b06f",
+          "Name": "y-labels",
+          "Description": "A list of string labels for the y-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e53d0d56195c4cc98ee1a09ba58b6c18",
+          "Name": "values",
+          "Description": "A list of lists each containing double values representing items in a column.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "77ec2b17b9c84abaad903f40cd441af8",
+          "Name": "colors",
+          "Description": "A list of colors used to generate a color range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b248cd90f5644e4192d95f427d699bf3",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new heat series plot."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
+      "XLabels": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "YLabels": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "Values": [
+        [
+          0.85231642837278376,
+          0.42649437553551717,
+          0.98618300305036033,
+          0.46399391324445322,
+          0.64533986740062943,
+          0.025992967200462225,
+          0.033580626376709263,
+          0.63120713114329019,
+          0.76249467663583093,
+          0.93514881326591071
+        ],
+        [
+          0.69150333045586165,
+          0.16652099795943173,
+          0.5409980334998099,
+          0.61357821971810345,
+          0.886694861057538,
+          0.32613846674847347,
+          0.0058175032054155612,
+          0.02759974823687214,
+          0.65253803862842641,
+          0.4503302888247791
+        ],
+        [
+          0.52790677572037414,
+          0.11903620330571951,
+          0.58157159461713,
+          0.881083681658415,
+          0.70770567176291055,
+          0.63512086478766094,
+          0.64199895301926835,
+          0.72873308916051549,
+          0.28539039533836319,
+          0.37089807929978619
+        ],
+        [
+          0.87299405404971631,
+          0.29019226566431683,
+          0.1976942709636382,
+          0.52734089061959688,
+          0.67453056279315171,
+          0.51271156385201566,
+          0.221949576969235,
+          0.94699811932956712,
+          0.29132963171756343,
+          0.38547397609123679
+        ],
+        [
+          0.49838538304827429,
+          0.93822913753717629,
+          0.33019240029630831,
+          0.52259583888696315,
+          0.48892896086393339,
+          0.46257373665579304,
+          0.9722139551174892,
+          0.9165515503457522,
+          0.31332219266953049,
+          0.88190339686437669
+        ],
+        [
+          0.074128511861957846,
+          0.49588191904867157,
+          0.78304669018045381,
+          0.36243903840074271,
+          0.51844014856891718,
+          0.73328022506706425,
+          0.84492278091838713,
+          0.10509932139194539,
+          0.75628824148154272,
+          0.010219002612968443
+        ],
+        [
+          0.38399401418119389,
+          0.30484753721619373,
+          0.34581673580492694,
+          0.39159659733604479,
+          0.062154759216194393,
+          0.40131106479154482,
+          0.96882672699579353,
+          0.013657142880213047,
+          0.93904765692495162,
+          0.37398329720552231
+        ],
+        [
+          0.10418888977923844,
+          0.058819383875848438,
+          0.73627011651930874,
+          0.26706406253718962,
+          0.95194490577650481,
+          0.58967763818319774,
+          0.78884380300941126,
+          0.058975755730166918,
+          0.39215472079448155,
+          0.24513193510711748
+        ],
+        [
+          0.66290690967017174,
+          0.72544740267351615,
+          0.415410896490985,
+          0.4034869984739865,
+          0.29676956743782834,
+          0.37711213500104479,
+          0.50714557548386308,
+          0.83525523256289547,
+          0.0089007420506797465,
+          0.94125033772608746
+        ],
+        [
+          0.66778878293362853,
+          0.11685025557728962,
+          0.19070987784802443,
+          0.281110629104595,
+          0.001479961910042894,
+          0.1935378458320805,
+          0.59241240173224941,
+          0.93859580296026346,
+          0.46044107967076875,
+          0.087617896072388582
+        ]
+      ],
+      "Colors": [
+        "#FF67FE63"
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "b411219d91324e85847ba1e27e8f7863",
+      "Inputs": [
+        {
+          "Id": "44b8984c6dbe4b76b18310ff3e3bb74b",
+          "Name": "x-labels",
+          "Description": "A list of string labels for the x-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8fdfd73960154a07be02aac0c1f8eabb",
+          "Name": "y-labels",
+          "Description": "A list of string labels for the y-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2da02d1b7796435caa802fa145952716",
+          "Name": "values",
+          "Description": "A list of lists each containing double values representing items in a column.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3436fa8abcfa4d789f2610c5c4ddd5ae",
+          "Name": "colors",
+          "Description": "A list of colors used to generate a color range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "233a36fc162f491fa61287a265f7ff88",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new heat series plot."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
       "XLabels": [
         "User-1",
         "User-2",
@@ -434,10 +494,10 @@
         "#FF0000FF"
       ],
       "NodeType": "ExtensionNode",
-      "Id": "237f2d43241b4031a8306ddafa535721",
+      "Id": "38ccbc37363c4808aef8ab2d7f36d8e0",
       "Inputs": [
         {
-          "Id": "7c89eb963988416ea443c05db926ad15",
+          "Id": "1ea2b93ee8624c00996f7cc1bbd35907",
           "Name": "x-labels",
           "Description": "A list of string labels for the x-axis.",
           "UsingDefaultValue": false,
@@ -446,7 +506,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "72a46a4d6e8644abba3d8fefb7447024",
+          "Id": "84204c3e2680444b9e4cac68c767cd23",
           "Name": "y-labels",
           "Description": "A list of string labels for the y-axis.",
           "UsingDefaultValue": false,
@@ -455,7 +515,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9852cbf97f784cf2888364087589a5bb",
+          "Id": "a1d59e0d9ad14fe583f20b48f734c3a8",
           "Name": "values",
           "Description": "A list of lists each containing double values representing items in a column.",
           "UsingDefaultValue": false,
@@ -464,7 +524,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "d2c944c4dfe24491a640bfd19fa7c6b0",
+          "Id": "52fa39cc16d545df88f359254d07c4ae",
           "Name": "colors",
           "Description": "A list of colors used to generate a color range",
           "UsingDefaultValue": false,
@@ -475,69 +535,9 @@
       ],
       "Outputs": [
         {
-          "Id": "00ffbb49d5b04cd8b6f299bcf5db969a",
-          "Name": "inputs",
-          "Description": "An object array containing all input values.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Create a new heat series plot."
-    },
-    {
-      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
-      "XLabels": null,
-      "YLabels": null,
-      "Values": null,
-      "Colors": null,
-      "NodeType": "ExtensionNode",
-      "Id": "464c06beec174b72995ae1f4315ad6b8",
-      "Inputs": [
-        {
-          "Id": "2cb4a57803c44a6f98a45fd381ceb404",
-          "Name": "x-labels",
-          "Description": "A list of string labels for the x-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "4f838e22e7d14098adddcfc4793892fa",
-          "Name": "y-labels",
-          "Description": "A list of string labels for the y-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "554d7a59db034fdcb0198231e410f9b0",
-          "Name": "values",
-          "Description": "A list of lists each containing double values representing items in a column.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "61db45d2c942406981805639c2b9e39c",
-          "Name": "colors",
-          "Description": "A list of colors used to generate a color range",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "3a7f5cf01da540b2bd442a49f46138ca",
-          "Name": "inputs",
-          "Description": "An object array containing all input values.",
+          "Id": "cf08c9a575624d63ba1506d69dc01952",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -561,48 +561,48 @@
     },
     {
       "Start": "1db6c1644bdc4bfc8c545c6e46d0d577",
-      "End": "c220d5189a3442228e241f3eb1cc7dc2",
-      "Id": "6c2153edcc3447efb815ee74eb26dd59"
+      "End": "44b8984c6dbe4b76b18310ff3e3bb74b",
+      "Id": "b3652dc16cdb49499bf98162a9064ec2"
     },
     {
       "Start": "1db6c1644bdc4bfc8c545c6e46d0d577",
-      "End": "1eceda4937ff4a8794d9a93ac23bb239",
-      "Id": "a35120cbce404715bf0ff1fc5dae6864"
+      "End": "8fdfd73960154a07be02aac0c1f8eabb",
+      "Id": "e9590be781b542edae9195ad4b4645a4"
     },
     {
-      "Start": "842537f6b3874301b6ddf4b8f6f06495",
-      "End": "73b49d629e1542cdaaa81741b2450b9a",
-      "Id": "319043bbf1b44fa9b2353982a2b20bee"
+      "Start": "cb9ca4c6a1f74970baa2c18e02f84a3d",
+      "End": "2da02d1b7796435caa802fa145952716",
+      "Id": "c5004b5c42dc467a8ecf5241c045bd0d"
     },
     {
-      "Start": "b7899613d07343ed8ec91eb0aa0519a4",
-      "End": "d8a289d59af641ad927f3a2a2ce6e011",
-      "Id": "d7af70e20d9444ca9bb29b7978359a6c"
+      "Start": "88a8195d359e425fb7d27f92e8ffd56e",
+      "End": "3436fa8abcfa4d789f2610c5c4ddd5ae",
+      "Id": "9ceee317cad349db91f216d5b9518d11"
     },
     {
       "Start": "e57b5e7121bb4dec89c4bd29180394b8",
-      "End": "b2a63c5887cc4cefb5392f6e9bbb44e7",
-      "Id": "e610f31faf3e4f7290170f498fb09faa"
+      "End": "e38a86b8d13545c09960d2ba7f6d187e",
+      "Id": "a637148a2671484ea56b036e116bc054"
     },
     {
       "Start": "5f00cbac201146ab848eb58065e58186",
-      "End": "7c89eb963988416ea443c05db926ad15",
-      "Id": "af990a0628bc496681d70df963be6f96"
+      "End": "1ea2b93ee8624c00996f7cc1bbd35907",
+      "Id": "9ccc48db483447a3818917addd504579"
     },
     {
       "Start": "481a6e4fbbdf47e9bd1ec1209b27274b",
-      "End": "72a46a4d6e8644abba3d8fefb7447024",
-      "Id": "0f27793773404f5eb12b02f1b38cf9e1"
+      "End": "84204c3e2680444b9e4cac68c767cd23",
+      "Id": "3512539c3a094b65bae36cfe5eb7db9f"
     },
     {
       "Start": "6541da6c318640cdb9431145082aa57d",
-      "End": "9852cbf97f784cf2888364087589a5bb",
-      "Id": "2a491fc8f3ea41288d0fe22586877796"
+      "End": "a1d59e0d9ad14fe583f20b48f734c3a8",
+      "Id": "bbbdc35121114916b113a8c7a48db8c6"
     },
     {
       "Start": "739ba07d364d4be1b3ec674d543539f3",
-      "End": "d2c944c4dfe24491a640bfd19fa7c6b0",
-      "Id": "158dcf18786d450fb1b010813ec10df2"
+      "End": "52fa39cc16d545df88f359254d07c4ae",
+      "Id": "a0ea719eb4684419b24313035d0fea75"
     }
   ],
   "Dependencies": [],
@@ -629,16 +629,6 @@
       "UpZ": 0.0
     },
     "NodeViews": [
-      {
-        "ShowGeometry": true,
-        "Name": "Heat Series Plot",
-        "Id": "06a33720610b4957ab883a9dec096422",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1413.2963499988091,
-        "Y": -61.389880851249757
-      },
       {
         "ShowGeometry": true,
         "Name": "Code Block",
@@ -686,33 +676,43 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1035.2365740627606,
+        "X": 1036.40809247438,
         "Y": 350.27513100868282
       },
       {
         "ShowGeometry": true,
         "Name": "Heat Series Plot",
-        "Id": "237f2d43241b4031a8306ddafa535721",
+        "Id": "191a002c0c754d05b4ffe29c19a63e26",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1413.2963499988091,
-        "Y": 530.17754641871966
+        "X": 1413.1497695866512,
+        "Y": -460.16320885192886
       },
       {
         "ShowGeometry": true,
         "Name": "Heat Series Plot",
-        "Id": "464c06beec174b72995ae1f4315ad6b8",
+        "Id": "b411219d91324e85847ba1e27e8f7863",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1413.2963499988091,
-        "Y": -452.37021035344014
+        "X": 1413.1497695866512,
+        "Y": -62.269829337442161
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Heat Series Plot",
+        "Id": "38ccbc37363c4808aef8ab2d7f36d8e0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1413.1497695866512,
+        "Y": 541.99862327192443
       }
     ],
     "Annotations": [],
-    "X": 225.07517765319676,
-    "Y": 289.82383149425533,
-    "Zoom": 0.583576184043887
+    "X": 72.901882179079,
+    "Y": 304.22241491307955,
+    "Zoom": 0.5959242495662419
   }
 }
