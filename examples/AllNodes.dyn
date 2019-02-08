@@ -60,66 +60,6 @@
       "Description": "Create a new Bar Chart."
     },
     {
-      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
-      "XLabels": null,
-      "YLabels": null,
-      "Values": null,
-      "Colors": null,
-      "NodeType": "ExtensionNode",
-      "Id": "b01061f8630a46938815036f3425ed81",
-      "Inputs": [
-        {
-          "Id": "aa527db8cd97434e8990da50e52f7e11",
-          "Name": "x-labels",
-          "Description": "A list of string labels for the x-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "e0600a47170d4e16bc70875e4384678d",
-          "Name": "y-labels",
-          "Description": "A list of string labels for the y-axis.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "be424acd1d5047068d4cdb735a444af6",
-          "Name": "values",
-          "Description": "A list of lists each containing double values representing items in a column.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "379f6cdeea764774ad1b682aaf4d8156",
-          "Name": "colors",
-          "Description": "A list of colors used to generate a color range",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "3307e7175f824d7a87337a8dc06dd61a",
-          "Name": "inputs",
-          "Description": "An object array containing all input values.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Create a new heat series plot."
-    },
-    {
       "ConcreteType": "NodeModelCharts.Nodes.BasicLineChartNodeModel, NodeModelCharts",
       "Labels": null,
       "Values": null,
@@ -338,6 +278,66 @@
       ],
       "Replication": "Disabled",
       "Description": "Create a new XY line plot."
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.HeatSeriesNodeModel, NodeModelCharts",
+      "XLabels": null,
+      "YLabels": null,
+      "Values": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "5a1c8fbc1c0c474080f3daf44e376dd3",
+      "Inputs": [
+        {
+          "Id": "6ef01c415ddf49caa5f7712ffbc9ddae",
+          "Name": "x-labels",
+          "Description": "A list of string labels for the x-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "54fd6c7db5de46f2b087d6e56f60d631",
+          "Name": "y-labels",
+          "Description": "A list of string labels for the y-axis.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "70d5685c1b084c63a37b65c2fa653523",
+          "Name": "values",
+          "Description": "A list of lists each containing double values representing items in a column.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cc1c275bc9b44bd0b11e40dfd68a025d",
+          "Name": "colors",
+          "Description": "A list of colors used to generate a color range",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "18a2e82bba2a4bdf9015322c7e1edf52",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new heat series plot."
     }
   ],
   "Connectors": [],
@@ -372,18 +372,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 668.11488462603347,
+        "X": 664.730098536862,
         "Y": 412.17206522196818
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Heat Series Plot",
-        "Id": "b01061f8630a46938815036f3425ed81",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 666.85651320561874,
-        "Y": 37.168135853556407
       },
       {
         "ShowGeometry": true,
@@ -424,11 +414,21 @@
         "Excluded": false,
         "X": 1132.0722872980746,
         "Y": 412.17206522196818
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Heat Series Plot",
+        "Id": "5a1c8fbc1c0c474080f3daf44e376dd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 665.730098536862,
+        "Y": 37.168135853556407
       }
     ],
     "Annotations": [],
-    "X": -70.985844550838209,
-    "Y": -2.9428225663675178,
-    "Zoom": 0.88631893448095567
+    "X": -170.34779932119861,
+    "Y": -12.331568294934563,
+    "Zoom": 1.1389209418982496
   }
 }
