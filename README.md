@@ -20,7 +20,7 @@ NodeModelCharts is built against Dynamo 2.02+
 ## Installing
 The easiest way to use NodeModelCharts is to download the prebuilt package on the Dynamo package manager.  If you would like to build from source you can additionally modify and uncomment [these lines](https://github.com/alfarok/NodeModelCharts/blob/master/NodeModelCharts/NodeModelCharts.csproj#L211) to automatically copy each Visual Studio build into your local Core packages folder.
 
-![IMG](examples/images/Package.png)
+![IMG](examples/images/Package.PNG)
 
 ## Exporting Images
 All `NodeModelChart` nodes have additional options in their context menu (right-click on node), one of which is `Export Chart as Image`.  This option will export a Png image of the chart at the current aspect ratio and state (excluding the `NodeView`).  For higher quality images, simply resize the node by dragging the box in the lower right-hand corner and export again.
