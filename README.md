@@ -1,5 +1,5 @@
 # NodeModelCharts
-A collection of custom UI graphing utility nodes for [Dynamo](https://github.com/DynamoDS/Dynamo),  assisting users to visualize data on-the-go in the graph without the need for external files, windows, or images.  This library leverages the open-source [Live Charts API](https://github.com/Live-Charts/Live-Charts) to display charts on Dynamo [NodeModel](https://github.com/DynamoDS/Dynamo/blob/8afcde02f859f5dd4f261d21edb32e2b94e9450a/src/DynamoCore/Graph/Nodes/NodeModel.cs) derived nodes using [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation).
+A collection of custom UI graphing utility nodes for [Dynamo](https://github.com/DynamoDS/Dynamo),  assisting users to visualize data on-the-go in the graph without the need for external files, windows, or images.  This library leverages the open-source [Live Charts API](https://github.com/Live-Charts/Live-Charts) to display charts on Dynamo [NodeModel](https://github.com/DynamoDS/Dynamo/blob/8afcde02f859f5dd4f261d21edb32e2b94e9450a/src/DynamoCore/Graph/Nodes/NodeModel.cs) derived nodes using [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation).  Check out the [demo video here](https://www.youtube.com/watch?v=eZSE2ZZf2J4).
 
 ![IMG](examples/images/nodeLibrary.png)
 
