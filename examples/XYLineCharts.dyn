@@ -715,6 +715,66 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "NodeModelCharts.Nodes.XYLineChartNodeModel, NodeModelCharts",
+      "Labels": null,
+      "XValues": null,
+      "YValues": null,
+      "Colors": null,
+      "NodeType": "ExtensionNode",
+      "Id": "019d1f82b9e547929e87c79a322ef158",
+      "Inputs": [
+        {
+          "Id": "9ebb6ef7b04f45c8a57788eb88d5714e",
+          "Name": "labels",
+          "Description": "A list of string labels for each line to be plotted",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f2c99e9e832f4b31b6ccc1b5f0896ab4",
+          "Name": "x-values",
+          "Description": "List of lists each containing double values representing x-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ee9b38d5cf214909b5a8d6a88127f4e7",
+          "Name": "y-values",
+          "Description": "List of lists each containing double values representing y-coordinates",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "69bcb6a882764bc6a8ceee65566d409d",
+          "Name": "colors",
+          "Description": "XY line chart line color values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8c60f746bbcf46ee93a3439343546120",
+          "Name": "labels:values",
+          "Description": "Dictionary containing label:value key-pairs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Create a new XY line plot."
     }
   ],
   "Connectors": [
@@ -836,187 +896,197 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.2.0.3945",
+      "Version": "2.2.0.3994",
       "RunType": "Automatic",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 1.6876943381564624,
-      "EyeY": 32.4920594333024,
-      "EyeZ": 46.680270976092537,
-      "LookX": 1.2536405354159141,
-      "LookY": 5.4119944695259727,
-      "LookZ": -60.383265076259633,
-      "UpX": -0.00624172541969039,
-      "UpY": 0.95371695074822738,
-      "UpZ": 0.30064101303596263
+      "EyeX": -1.2191605507296863,
+      "EyeY": 6.3512837244333937,
+      "EyeZ": 37.971858151238926,
+      "LookX": 4.5671527191931034,
+      "LookY": 33.574766170661249,
+      "LookZ": -50.287932872857859,
+      "UpX": -0.065062701938853523,
+      "UpY": 0.69465837045899759,
+      "UpZ": 0.71639136871382647
     },
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "ab045872a6e94ba0bace3ff33d518f2e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 577.77047118823316,
         "Y": 227.89079865805914
       },
       {
-        "ShowGeometry": true,
-        "Name": "XY Line",
         "Id": "942625d834454a6883158d617ec129bc",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "XY Line",
+        "ShowGeometry": true,
         "Excluded": false,
-        "X": 818.380279082445,
+        "X": 819.08628607392438,
         "Y": 210.77524449430615
       },
       {
-        "ShowGeometry": true,
-        "Name": "Integer Slider",
         "Id": "39adf43739d145b2a37d2147d853e88a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Integer Slider",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 256.163135406043,
         "Y": 193.75766761169237
       },
       {
-        "ShowGeometry": true,
-        "Name": "Color Palette",
         "Id": "9e8564c82ba34b5c8c1fdfd60758e73b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Color Palette",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 431.40629626545069,
         "Y": 254.20762971123679
       },
       {
-        "ShowGeometry": true,
-        "Name": "Math.Sin",
         "Id": "9d81828286dc4eb2b101457761acddb0",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Math.Sin",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 416.37325131848121,
         "Y": 700.34691298102064
       },
       {
-        "ShowGeometry": true,
-        "Name": "Math.RadiansToDegrees",
         "Id": "a16793a85c9f4ccb98a6fa2d319e76e3",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Math.RadiansToDegrees",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 177.64484063329667,
         "Y": 738.3755156045064
       },
       {
-        "ShowGeometry": true,
-        "Name": "Range",
         "Id": "47bc0d765c70403c97c9dd86c0bac6bd",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Range",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": -16.877312195097716,
         "Y": 594.90569775884865
       },
       {
-        "ShowGeometry": true,
-        "Name": "Math.PiTimes2",
         "Id": "87363bdb00f841deae6149eb8d231337",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Math.PiTimes2",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": -275.00503434407574,
         "Y": 621.25992510311369
       },
       {
-        "ShowGeometry": true,
-        "Name": "XY Line",
         "Id": "76467a27c74a4af7aaa7c1358493d74b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "XY Line",
+        "ShowGeometry": true,
         "Excluded": false,
-        "X": 818.16749376534653,
+        "X": 819.08628607392438,
         "Y": 588.87062848881624
       },
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "bd79ded021e94497a702f89e41ef0b32",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 328.26924588978682,
         "Y": 599.26112006792584
       },
       {
-        "ShowGeometry": true,
-        "Name": "Color Palette",
         "Id": "337c3945afb340789817ca0312e27934",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Color Palette",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 462.19141872356238,
         "Y": 876.79332689706314
       },
       {
-        "ShowGeometry": true,
-        "Name": "Math.Cos",
         "Id": "812018395ba84cfc9465f9f08aee1796",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Math.Cos",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 415.58462140338759,
         "Y": 787.741373165497
       },
       {
-        "ShowGeometry": true,
-        "Name": "List Create",
         "Id": "d1eac24859934ec7a4e8b675c2472ba1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "List Create",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 604.91927251943684,
         "Y": 725.78783289204944
       },
       {
-        "ShowGeometry": true,
-        "Name": "Color Palette",
         "Id": "3cce85d611ff407f8f076df3b65255cc",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Color Palette",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 462.67607561387092,
         "Y": 963.53582172694962
       },
       {
-        "ShowGeometry": true,
-        "Name": "List Create",
         "Id": "90916998c14a481e901c6f91c4d71ce9",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "List Create",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 616.11497485330642,
         "Y": 896.06396898107437
       },
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "1d3810d636584660b8a5bf37d36b857b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": -143.827245326511,
         "Y": 616.61177044842714
+      },
+      {
+        "Id": "019d1f82b9e547929e87c79a322ef158",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "XY Line Plot",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 819.08628607392438,
+        "Y": -172.751882453728
       }
     ],
     "Annotations": [],
-    "X": 223.9784515055897,
-    "Y": -81.415330251814055,
-    "Zoom": 0.705363274415156
+    "X": 339.07732393300944,
+    "Y": 140.79626704546095,
+    "Zoom": 0.68188123551714674
   }
 }
