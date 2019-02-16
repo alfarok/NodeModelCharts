@@ -248,7 +248,7 @@ namespace NodeModelCharts.Nodes
 
         private void ExportImage_Click(object sender, RoutedEventArgs e)
         {
-            Export.ToPng(barChartControl);
+            Export.ToPng(barChartControl.BarChart);
         }
 
         /// <summary>
